@@ -7,5 +7,6 @@
 	</PropertyGroup>
 
 	<Import Project="..\stylecop.props" />
+	<Import Project="..\http.targets" />
 
 </Project>
