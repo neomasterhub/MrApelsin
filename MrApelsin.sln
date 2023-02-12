@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{38E5EA0D-F066-4105-9E74-3E9447D5B2B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphQLTransport", "GraphQLTransport\GraphQLTransport.csproj", "{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{38E5EA0D-F066-4105-9E74-3E9447D5B2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E5EA0D-F066-4105-9E74-3E9447D5B2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E5EA0D-F066-4105-9E74-3E9447D5B2B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{CE861F3E-2FF2-4B12-AE9C-D53A5A5F53C6} = {C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}
 		{C728DF1D-62AF-4188-AC51-7D7F8C2A8757} = {DD36BA13-219E-48EB-97F3-A4BAE9B8A453}
 		{38E5EA0D-F066-4105-9E74-3E9447D5B2B1} = {A19FED96-5EC3-4686-A325-E53CB12FF2B7}
+		{FE951579-44DD-4A3E-BAB3-EF9E1463EA2A} = {A19FED96-5EC3-4686-A325-E53CB12FF2B7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8C4793C-BA7E-4803-8068-9DAFB53160C7}
