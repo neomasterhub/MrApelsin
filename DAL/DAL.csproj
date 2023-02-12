@@ -24,5 +24,6 @@
 
 	<Import Project="..\stylecop.props" />
 	<Import Project="..\http.targets" />
+	<Import Project="..\testing.targets" />
 
 </Project>

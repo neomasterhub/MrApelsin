@@ -30,11 +30,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{BAF6FAA7-053D-4678-8F53-CCFC12EEC881}"
 	ProjectSection(SolutionItems) = preProject
 		http.targets = http.targets
+		testing.targets = testing.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{C1521729-AAE2-4A84-BEF4-B8FFE73691D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{CD5131E2-54AB-4962-97C1-EF83B1416019}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{B0CA61E9-E18E-408B-86D2-983444B1556D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +65,10 @@ Global
 		{CD5131E2-54AB-4962-97C1-EF83B1416019}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD5131E2-54AB-4962-97C1-EF83B1416019}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD5131E2-54AB-4962-97C1-EF83B1416019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0CA61E9-E18E-408B-86D2-983444B1556D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0CA61E9-E18E-408B-86D2-983444B1556D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0CA61E9-E18E-408B-86D2-983444B1556D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0CA61E9-E18E-408B-86D2-983444B1556D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +81,7 @@ Global
 		{BAF6FAA7-053D-4678-8F53-CCFC12EEC881} = {C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}
 		{C1521729-AAE2-4A84-BEF4-B8FFE73691D3} = {C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}
 		{CD5131E2-54AB-4962-97C1-EF83B1416019} = {C1521729-AAE2-4A84-BEF4-B8FFE73691D3}
+		{B0CA61E9-E18E-408B-86D2-983444B1556D} = {C1521729-AAE2-4A84-BEF4-B8FFE73691D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8C4793C-BA7E-4803-8068-9DAFB53160C7}
