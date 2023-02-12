@@ -1,0 +1,28 @@
+<Project>
+	<Target Name="WriteVersion" AfterTargets="Rebuild">
+
+		<PropertyGroup>
+			<CurrentDatetime>$([System.DateTime]::Now.ToString(yyyy.MM.dd HH:mm:ss))</CurrentDatetime>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<AssemblyAttributes Include="Common.Attributes.AppVersion">
+				<_Parameter1>$(Version)</_Parameter1>
+				<_Parameter2>$(CurrentDatetime)</_Parameter2>
+			</AssemblyAttributes>
+		</ItemGroup>
+
+		<WriteCodeFragment
+			OutputFile="AssemblyInfo.cs"
+			AssemblyAttributes="@(AssemblyAttributes)"
+			Language="C#" />
+
+		<WriteLinesToFile
+			Condition="$(ClientVersionPath) != ''"
+			File="$(ClientVersionPath)"
+			Lines="export const versionNumber = '$(Version)'%3B;export const versionDatetime = '$(CurrentDatetime)'%3B"
+			Overwrite="true"
+			Encoding="UTF-8" />
+
+	</Target>
+</Project>
