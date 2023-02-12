@@ -4,6 +4,6 @@ namespace WebApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-internal abstract class ApiControllerBase : ControllerBase
+public class ApiControllerBase : ControllerBase
 {
 }
