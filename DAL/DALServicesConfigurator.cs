@@ -5,7 +5,7 @@ namespace DAL;
 
 public static class DALServicesConfigurator
 {
-    public static IServiceCollection AddDalServices(this IServiceCollection services, string connectionString) => services
+    public static IServiceCollection AddDALServices(this IServiceCollection services, string connectionString) => services
         .AddDbContext<AppDbContext>(options => options
             .UseSqlServer(connectionString, options => options
                 .MigrationsAssembly("WebApi")
