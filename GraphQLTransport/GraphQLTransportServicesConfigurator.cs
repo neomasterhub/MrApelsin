@@ -12,6 +12,7 @@ public static class GraphQLTransportServicesConfigurator
 
         services
             .AddGraphQLServer()
+            .RegisterDbContext<AppDbContext>()
             .AddQueryType<Query>();
 
         return services;
