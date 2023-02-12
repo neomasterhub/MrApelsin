@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DAL.Configurations;
+namespace DAL.LogicContexts.Audit.Configuration;
 
 internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
 {
@@ -13,6 +13,14 @@ internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
 
         builder.Property(e => e.DateTimeUtc)
             .IsRequired();
+
+        builder.Property(e => e.Object)
+            .IsRequired()
+            .HasMaxLength(500);
+
+        builder.Property(e => e.Subject)
+            .IsRequired()
+            .HasMaxLength(500);
 
         builder.Property(e => e.Description)
             .IsRequired(false)
