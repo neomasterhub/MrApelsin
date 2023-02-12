@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>disable</Nullable>
-        <Version>1.0.0.0</Version>
-        <ClientVersionPath>$(SolutionDir)Client\src\app\consts\app-version.consts.ts</ClientVersionPath>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<Version>1.0.0.0</Version>
+		<ClientVersionPath>$(SolutionDir)Client\src\app\consts\app-version.consts.ts</ClientVersionPath>
+	</PropertyGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\Common\Common.csproj" />
-    </ItemGroup>
-    
-    <Import Project="..\versioning.targets" />
+	<ItemGroup>
+		<ProjectReference Include="..\Common\Common.csproj" />
+	</ItemGroup>
+
+	<Import Project="..\stylecop.props" />
+	<Import Project="..\versioning.targets" />
 
 </Project>
