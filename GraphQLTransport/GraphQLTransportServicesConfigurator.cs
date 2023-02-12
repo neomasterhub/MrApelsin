@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DAL.LogicContexts.Audit.Services.AddAuditEvent;
 using GraphQLTransport.Schema;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,7 @@ public static class GraphQLTransportServicesConfigurator
         services
             .AddGraphQLServer()
             .RegisterDbContext<AppDbContext>()
+            .RegisterService<IAddAuditEventService>()
             .AddQueryType<Query>()
             .AddMutationType<Mutation>();
 
