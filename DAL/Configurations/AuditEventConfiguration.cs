@@ -1,0 +1,21 @@
+﻿using DataModel;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DAL.Configurations;
+
+internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
+{
+    public void Configure(EntityTypeBuilder<AuditEvent> builder)
+    {
+        builder.ToTable(nameof(AuditEvent))
+            .HasKey(e => e.Id);
+
+        builder.Property(e => e.DateTimeUtc)
+            .IsRequired();
+
+        builder.Property(e => e.Description)
+            .IsRequired(false)
+            .HasMaxLength(2000);
+    }
+}
