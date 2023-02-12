@@ -1,12 +1,16 @@
 ﻿using DataModel;
+using Microsoft.AspNetCore.Http;
 
 namespace DAL.LogicContexts.Audit.Services.AddAuditEvent;
 
 public class AddAuditEventService : EFServiceBase, IAddAuditEventService
 {
-    public AddAuditEventService(AppDbContext context)
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public AddAuditEventService(AppDbContext context, IHttpContextAccessor httpContextAccessor)
         : base(context)
     {
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public AuditEvent Add(AddAuditEvent e)
@@ -15,7 +19,7 @@ public class AddAuditEventService : EFServiceBase, IAddAuditEventService
         {
             DateTimeUtc = DateTime.UtcNow,
             Subject = e.Subject,
-            Object = e.Object,
+            Object = _httpContextAccessor.HttpContext.Request.Path,
             Description = e.Description,
         };
 
