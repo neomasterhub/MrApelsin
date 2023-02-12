@@ -14,7 +14,7 @@ internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
         builder.Property(e => e.DateTimeUtc)
             .IsRequired();
 
-        builder.Property(e => e.Object)
+        builder.Property(e => e.Url)
             .IsRequired()
             .HasMaxLength(500);
 

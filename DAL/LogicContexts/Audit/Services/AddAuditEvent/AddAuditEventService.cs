@@ -20,7 +20,7 @@ public class AddAuditEventService : EFServiceBase, IAddAuditEventService
         {
             DateTimeUtc = DateTime.UtcNow,
             Subject = e.Subject,
-            Object = _httpContextAccessor.HttpContext.Request.GetUrl(),
+            Url = _httpContextAccessor.HttpContext.Request.GetUrl(),
             Description = e.Description,
         };
 
