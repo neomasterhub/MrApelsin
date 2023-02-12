@@ -19,8 +19,8 @@ internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
             .HasMaxLength(500);
 
         builder.Property(e => e.Subject)
-            .IsRequired()
-            .HasMaxLength(500);
+            .IsRequired(false)
+            .HasMaxLength(200);
 
         builder.Property(e => e.Description)
             .IsRequired(false)
