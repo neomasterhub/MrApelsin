@@ -18,4 +18,13 @@ public class AddAuditEventServiceUnitTests : IClassFixture<AppDbContextFixture>
             builder.RegisterType<AddAuditEventService>().As<IAddAuditEventService>();
         });
     }
+
+    [Fact]
+    public void ShouldBeResolved()
+    {
+        var actual = _mock.Create<IAddAuditEventService>();
+
+        Assert.NotNull(actual);
+        Assert.IsType<AddAuditEventService>(actual);
+    }
 }
