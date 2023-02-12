@@ -1,4 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("MSSQL");
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
