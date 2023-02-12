@@ -6,7 +6,7 @@
 		</PropertyGroup>
 
 		<ItemGroup>
-			<AssemblyAttributes Include="Common.Attributes.AppVersion">
+			<AssemblyAttributes Include="Common.Versioning.AppVersion">
 				<_Parameter1>$(Version)</_Parameter1>
 				<_Parameter2>$(CurrentDatetime)</_Parameter2>
 			</AssemblyAttributes>
