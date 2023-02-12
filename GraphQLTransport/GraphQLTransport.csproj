@@ -9,7 +9,11 @@
 	<Import Project="..\stylecop.props" />
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DAL\DAL.csproj" />
+		<PackageReference Include="HotChocolate.AspNetCore" Version="13.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DAL\DAL.csproj" />
 	</ItemGroup>
 
 </Project>
