@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}"
 	ProjectSection(SolutionItems) = preProject
-		..\AdminNg14\README.md = ..\AdminNg14\README.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop", "StyleCop", "{CE861F3E-2FF2-4B12-AE9C-D53A5A5F53C6}"
