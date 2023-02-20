@@ -6,10 +6,10 @@ namespace DAL;
 
 public static class DALServicesConfigurator
 {
-    public static IServiceCollection AddDALServices(this IServiceCollection services, string connectionString) => services
+    public static IServiceCollection AddDALServices(this IServiceCollection services, string migrationsAssemblyName, string connectionString) => services
         .AddDbContext<AppDbContext>(options => options
             .UseSqlServer(connectionString, options => options
-                .MigrationsAssembly("WebApi")
+                .MigrationsAssembly(migrationsAssemblyName)
                 .MigrationsHistoryTable(tableName: "__EFMigrationsHistory", schema: AppDbContext.Schema)))
         .AddAuditServices();
 }

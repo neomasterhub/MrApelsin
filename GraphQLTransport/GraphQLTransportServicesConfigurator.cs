@@ -7,9 +7,12 @@ namespace GraphQLTransport;
 
 public static class GraphQLTransportServicesConfigurator
 {
-    public static IServiceCollection AddGraphQLTransportServices(this IServiceCollection services, string connectionString)
+    public static IServiceCollection AddGraphQLTransportServices(
+        this IServiceCollection services,
+        string migrationsAssemblyName,
+        string connectionString)
     {
-        services.AddDALServices(connectionString);
+        services.AddDALServices(migrationsAssemblyName, connectionString);
 
         services
             .AddGraphQLServer()

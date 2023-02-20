@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddCorsPolicy();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddGraphQLTransportServices(connectionString);
+builder.Services.AddGraphQLTransportServices(nameof(WebApi), connectionString);
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
