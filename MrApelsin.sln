@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{38905031-C81F-4589-B7E1-7CD3F98A8EC2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop", "StyleCop", "{CE861F3E-2FF2-4B12-AE9C-D53A5A5F53C6}"
 	ProjectSection(SolutionItems) = preProject
@@ -40,7 +37,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProject", "TestProject\TestProject.csproj", "{B0CA61E9-E18E-408B-86D2-983444B1556D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInfo", "AppInfo\AppInfo.csproj", "{13CB3D39-3FC8-43F6-AEE2-B656A60F643B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInfo", "AppInfo\AppInfo.csproj", "{13CB3D39-3FC8-43F6-AEE2-B656A60F643B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{EEB8FF8F-113C-4770-8464-0142944052E3}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Drafts.md = Docs\Drafts.md
+		Docs\README.md = Docs\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +93,7 @@ Global
 		{CD5131E2-54AB-4962-97C1-EF83B1416019} = {C1521729-AAE2-4A84-BEF4-B8FFE73691D3}
 		{B0CA61E9-E18E-408B-86D2-983444B1556D} = {C1521729-AAE2-4A84-BEF4-B8FFE73691D3}
 		{13CB3D39-3FC8-43F6-AEE2-B656A60F643B} = {A19FED96-5EC3-4686-A325-E53CB12FF2B7}
+		{EEB8FF8F-113C-4770-8464-0142944052E3} = {C211CBCE-B1CD-4CF9-BA09-783B9FDF923E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8C4793C-BA7E-4803-8068-9DAFB53160C7}
