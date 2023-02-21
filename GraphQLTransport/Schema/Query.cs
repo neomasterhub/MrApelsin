@@ -11,7 +11,7 @@ public class Query
     [UseSorting]
     public IQueryable<AuditEvent> GetAuditEvents(AppDbContext context) => context.AuditEvents;
 
-    public async Task<AppVersion> GetAppVersion([Service] ITopicEventSender sender)
+    public async Task<AppVersion> GetAppVersionAsync([Service] ITopicEventSender sender)
     {
         var result = AppInfo.Info.Instance.AppVersion;
         var message = new ServerMessage
