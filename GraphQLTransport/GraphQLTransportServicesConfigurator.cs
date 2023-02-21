@@ -16,6 +16,7 @@ public static class GraphQLTransportServicesConfigurator
 
         services
             .AddGraphQLServer()
+            .AddInMemorySubscriptions()
             .RegisterDbContext<AppDbContext>()
             .RegisterService<IAddAuditEventService>()
             .AddQueryType<Query>()
