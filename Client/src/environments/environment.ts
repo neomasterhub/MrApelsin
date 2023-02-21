@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  graphqlOrigin: 'http://localhost:5008/graphql',
+  graphqlOrigins: {
+    http: 'http://localhost:5008/graphql',
+    ws: 'ws://localhost:5008/graphql',
+  },
 };
 
 /*
