@@ -1,10 +1,11 @@
 # Drafts
 
-1. Apollo Client
- + [Query](#1)
- + [Subscription](#2)
+**Apollo Client**
+ + [Pure Query](#1)
+ + [Pure Subscription](#2)
+ + [Typed Subscription](#3)
 
-## <a name="1"></a> Query
+## <a name="1"></a> Pure Query
 ```ts
 import { Component } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
@@ -47,7 +48,7 @@ export class AppComponent {
   }
 }
 ```
-## <a name="1"></a> Subscription
+## <a name="2"></a> Pure Subscription
 
 ```ts
 import { Component } from '@angular/core';
@@ -90,4 +91,31 @@ export class AppComponent {
     });
   }
 }
+```
+## <a name="3"></a> Typed Subscription
+```ts
+import { Component, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { ServerMessageReceivedGQL } from '../graphql/generated/graphql';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less'],
+})
+export class AppComponent implements OnInit {
+  constructor(
+    private apollo: Apollo,
+    private serverMessageReceivedGQL: ServerMessageReceivedGQL
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.serverMessageReceivedGQL.subscribe()
+      .subscribe(({ data }) => {
+        console.log(data?.serverMessageReceived);
+      });
+  }
+}
+
 ```
