@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 app.UseRouting();
+app.UseWebSockets();
 app.UseCors(CorsPolicyConfigurator.CorsPolicyName);
 app.UseAuthorization();
 app.MapControllers();
