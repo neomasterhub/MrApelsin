@@ -19,7 +19,8 @@ public static class GraphQLTransportServicesConfigurator
             .RegisterDbContext<AppDbContext>()
             .RegisterService<IAddAuditEventService>()
             .AddQueryType<Query>()
-            .AddMutationType<Mutation>();
+            .AddMutationType<Mutation>()
+            .AddSubscriptionType<Subscription>();
 
         return services;
     }
