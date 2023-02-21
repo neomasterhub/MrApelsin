@@ -1,0 +1,92 @@
+type Query {
+  auditEvents(
+    skip: Int
+    take: Int
+    order: [AuditEventSortInput!]
+  ): AuditEventsCollectionSegment
+  appVersion: AppVersion
+}
+
+type Mutation {
+  addAuditEvent(e: AddAuditEventInput): AuditEvent
+}
+
+type Subscription {
+  serverMessageReceived: ServerMessage
+}
+
+input AuditEventSortInput {
+  id: SortEnumType
+  dateTimeUtc: SortEnumType
+  url: SortEnumType
+  subject: SortEnumType
+  description: SortEnumType
+}
+
+"""
+A segment of a collection.
+"""
+type AuditEventsCollectionSegment {
+  """
+  Information to aid in pagination.
+  """
+  pageInfo: CollectionSegmentInfo!
+
+  """
+  A flattened list of the items.
+  """
+  items: [AuditEvent]
+  totalCount: Int!
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+"""
+Information about the offset pagination.
+"""
+type CollectionSegmentInfo {
+  """
+  Indicates whether more items exist following the set defined by the clients arguments.
+  """
+  hasNextPage: Boolean!
+
+  """
+  Indicates whether more items exist prior the set defined by the clients arguments.
+  """
+  hasPreviousPage: Boolean!
+}
+
+type AuditEvent {
+  id: Int!
+  dateTimeUtc: DateTime!
+  url: String
+  subject: String
+  description: String
+}
+
+input AddAuditEventInput {
+  subject: String
+  description: String
+}
+
+"""
+The `DateTime` scalar represents an ISO-8601 compliant date time type.
+"""
+scalar DateTime
+
+type AppVersion {
+  versionNumber: String
+  buildDatetime: String
+}
+
+type ServerMessage {
+  messageType: ServerMessageType!
+  text: String
+}
+
+enum ServerMessageType {
+  APP_VERSION
+}

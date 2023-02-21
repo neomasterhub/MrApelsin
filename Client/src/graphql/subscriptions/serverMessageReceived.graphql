@@ -1,0 +1,6 @@
+subscription ServerMessageReceived {
+  serverMessageReceived {
+    messageType
+    text
+  }
+}
