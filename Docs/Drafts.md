@@ -1,9 +1,10 @@
 # Drafts
 
 1. Apollo Client
- + [Test query](#1)
+ + [Query](#1)
+ + [Subscription](#2)
 
-## <a name="1"></a> Test query
+## <a name="1"></a> Query
 ```ts
 import { Component } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
@@ -29,6 +30,50 @@ export class AppComponent {
           url
         }
       }`
+    })
+    .subscribe({
+      next: (result) => {
+        console.log(result.data);
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.log({
+          'sub closed': this.sub?.closed,
+        }); // false
+      }
+    });
+  }
+}
+```
+## <a name="1"></a> Subscription
+
+```ts
+import { Component } from '@angular/core';
+import { Apollo, gql } from 'apollo-angular';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less'],
+})
+export class AppComponent {
+  sub?: Subscription;
+
+  constructor(private apollo: Apollo) {
+  }
+
+  openWS() {
+    this.sub = this.apollo
+    .subscribe({
+      query: gql`subscription {
+        serverMessageReceived {
+          messageType
+          text
+        }
+      }`,
     })
     .subscribe({
       next: (result) => {

@@ -13,15 +13,15 @@ export class AppComponent {
   constructor(private apollo: Apollo) {
   }
 
-  getAuditEvents() {
+  openWS() {
     this.sub = this.apollo
-    .query({
-      query: gql`query {
-        auditEvents {
-          id
-          url
+    .subscribe({
+      query: gql`subscription {
+        serverMessageReceived {
+          messageType
+          text
         }
-      }`
+      }`,
     })
     .subscribe({
       next: (result) => {
