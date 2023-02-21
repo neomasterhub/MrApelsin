@@ -7,6 +7,8 @@ namespace GraphQLTransport.Schema;
 
 public class Query
 {
+    [UseOffsetPaging(DefaultPageSize = 30, IncludeTotalCount = true)]
+    [UseSorting]
     public IQueryable<AuditEvent> GetAuditEvents(AppDbContext context) => context.AuditEvents;
 
     public async Task<AppVersion> GetAppVersion([Service] ITopicEventSender sender)
