@@ -1,24 +1,30 @@
 import { Injectable } from '@angular/core';
 import { ApolloError } from '@apollo/client';
-import { Maybe } from 'graphql/jsutils/Maybe';
+import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { ServerMessage, ServerMessageReceivedGQL } from '../../../../graphql/generated/graphql';
+import { ServerMessageReceivedGQL, ServerMessageType } from '../../../../graphql/generated/graphql';
+import { isEstablished, isFailed } from '../ngrx/server-connection.actions';
 
 @Injectable()
 export class EstablishServerConnectionService {
-  constructor(private serverMessageReceivedGQL: ServerMessageReceivedGQL) {
+  constructor(
+    private readonly serverMessageReceivedGQL: ServerMessageReceivedGQL,
+    private readonly store: Store<{ serverConnection: string }>,
+  ) {
   }
 
-  establish(
-    messageHandler: (data: Maybe<ServerMessage>) => void,
-    errorHandler: (error: ApolloError) => void,
-  ) {
+  establish() {
     this.serverMessageReceivedGQL.subscribe()
       .pipe(
-        tap(({ data }) => messageHandler(data?.serverMessageReceived)),
+        tap(({ data }) => {
+          if (data?.serverMessageReceived?.messageType === ServerMessageType.AppVersion) {
+            this.store.dispatch(isEstablished());
+          }
+        },
+        ),
       )
       .subscribe({
-        error: (error: ApolloError) => errorHandler(error),
+        error: (error: ApolloError) => this.store.dispatch(isFailed({ error })),
       });
   }
 }
