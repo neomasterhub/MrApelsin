@@ -1,4 +1,5 @@
-import { createAction } from '@ngrx/store';
+import { ApolloError } from '@apollo/client';
+import { createAction, props } from '@ngrx/store';
 
 const contextName = '[Server Connection]';
 
@@ -12,4 +13,5 @@ export const isEstablished = createAction(
 
 export const isFailed = createAction(
   `${contextName} is failed`,
+  props<{ error: ApolloError }>(),
 );
