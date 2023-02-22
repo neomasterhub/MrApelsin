@@ -15,3 +15,7 @@ export const isFailed = createAction(
   `${contextName} is failed`,
   props<{ error: ApolloError }>(),
 );
+
+export const isWaiting = createAction(
+  `${contextName} is waiting for retry to be established`
+);
