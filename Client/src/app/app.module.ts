@@ -5,9 +5,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { metaReducers } from './app.reducers';
 import { ServerConnectionReducer } from './features/server-connection/ngrx/server-connection.reducers';
 import { GraphQLModule } from './graphql.module';
+import { metaReducers } from './ngrx/app.reducers';
 
 @NgModule({
   declarations: [
