@@ -5,7 +5,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ServerConnectionEffects } from './features/server-connection/ngrx/server-connection.effects';
 import { ServerConnectionReducer } from './features/server-connection/ngrx/server-connection.reducers';
+import {
+  EstablishServerConnectionService,
+} from './features/server-connection/services/establish-server-connection.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
 
@@ -23,9 +27,11 @@ import { metaReducers } from './ngrx/app.reducers';
     }, {
       metaReducers,
     }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([
+      ServerConnectionEffects,
+    ]),
   ],
-  providers: [],
+  providers: [EstablishServerConnectionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
