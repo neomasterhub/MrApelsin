@@ -1,7 +1,7 @@
 ﻿using DataModel;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.LogicContexts.Audit;
+namespace DAL.Features.Audit;
 
 internal interface IAuditContext
 {

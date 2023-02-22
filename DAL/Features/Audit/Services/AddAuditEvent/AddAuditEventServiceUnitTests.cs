@@ -5,7 +5,7 @@ using DataModel;
 using Microsoft.AspNetCore.Http;
 using Xunit;
 
-namespace DAL.LogicContexts.Audit.Services.AddAuditEvent;
+namespace DAL.Features.Audit.Services.AddAuditEvent;
 
 public class AddAuditEventServiceUnitTests : IClassFixture<AppDbContextFixture>
 {

@@ -1,4 +1,4 @@
-﻿using DAL.LogicContexts.Audit.Services;
+﻿using DAL.Features.Audit.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

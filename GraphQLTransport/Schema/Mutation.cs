@@ -1,4 +1,4 @@
-﻿using DAL.LogicContexts.Audit.Services.AddAuditEvent;
+﻿using DAL.Features.Audit.Services.AddAuditEvent;
 using DataModel;
 
 namespace GraphQLTransport.Schema;

@@ -1,6 +1,6 @@
 ﻿using DataModel;
 
-namespace DAL.LogicContexts.Audit.Services.AddAuditEvent;
+namespace DAL.Features.Audit.Services.AddAuditEvent;
 
 public interface IAddAuditEventService
 {

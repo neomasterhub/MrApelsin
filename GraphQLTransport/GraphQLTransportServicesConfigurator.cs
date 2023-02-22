@@ -1,5 +1,5 @@
 ﻿using DAL;
-using DAL.LogicContexts.Audit.Services.AddAuditEvent;
+using DAL.Features.Audit.Services.AddAuditEvent;
 using GraphQLTransport.Schema;
 using Microsoft.Extensions.DependencyInjection;
 

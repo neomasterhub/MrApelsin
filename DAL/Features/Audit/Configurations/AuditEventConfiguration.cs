@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DAL.LogicContexts.Audit.Configuration;
+namespace DAL.Features.Audit.Configuration;
 
 internal class AuditEventConfiguration : IEntityTypeConfiguration<AuditEvent>
 {

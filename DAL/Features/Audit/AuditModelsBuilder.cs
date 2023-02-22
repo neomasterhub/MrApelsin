@@ -1,7 +1,7 @@
-﻿using DAL.LogicContexts.Audit.Configuration;
+﻿using DAL.Features.Audit.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.LogicContexts.Audit;
+namespace DAL.Features.Audit;
 
 internal static class AuditModelsBuilder
 {

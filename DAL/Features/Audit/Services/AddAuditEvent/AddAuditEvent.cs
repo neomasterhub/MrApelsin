@@ -1,4 +1,4 @@
-﻿namespace DAL.LogicContexts.Audit.Services.AddAuditEvent;
+﻿namespace DAL.Features.Audit.Services.AddAuditEvent;
 
 public class AddAuditEvent
 {

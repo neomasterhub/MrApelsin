@@ -1,4 +1,4 @@
-﻿using DAL.LogicContexts.Audit;
+﻿using DAL.Features.Audit;
 using DataModel;
 using Microsoft.EntityFrameworkCore;
 

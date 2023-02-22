@@ -1,7 +1,7 @@
-﻿using DAL.LogicContexts.Audit.Services.AddAuditEvent;
+﻿using DAL.Features.Audit.Services.AddAuditEvent;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DAL.LogicContexts.Audit.Services;
+namespace DAL.Features.Audit.Services;
 
 internal static class AuditServicesConfigurator
 {
