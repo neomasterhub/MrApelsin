@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
+import { metaReducers } from './app.reducers';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,11 @@ import { GraphQLModule } from './graphql.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}, {}),
     GraphQLModule,
     HttpClientModule,
+    StoreModule.forRoot({}, {
+      metaReducers,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
