@@ -8,6 +8,7 @@ export const environment = {
     http: 'http://localhost:5008/graphql',
     ws: 'ws://localhost:5008/graphql',
   },
+  serverConnectionRetryTimeoutSeconds: 3,
 };
 
 /*
