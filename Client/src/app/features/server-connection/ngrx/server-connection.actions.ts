@@ -1,5 +1,6 @@
 import { ApolloError } from '@apollo/client';
 import { createAction, props } from '@ngrx/store';
+import { environment } from '../../../../environments/environment';
 
 const contextName = '[Server Connection]';
 
@@ -17,5 +18,5 @@ export const isFailed = createAction(
 );
 
 export const isWaiting = createAction(
-  `${contextName} is waiting for retry to be established`
+  `${contextName} is waiting for retry to be established id ${environment.serverConnectionRetryTimeoutSeconds} seconds`,
 );

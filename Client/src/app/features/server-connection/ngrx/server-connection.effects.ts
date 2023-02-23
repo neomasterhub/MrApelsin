@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs';
+import { delay, map, tap } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { isCreated } from '../../../ngrx/app.actions';
 import { EstablishServerConnectionService } from '../services/establish-server-connection.service';
-import { isEstablishing } from './server-connection.actions';
+import { isEstablishing, isFailed, isWaiting } from './server-connection.actions';
 
 @Injectable()
 export class ServerConnectionEffects {
@@ -13,14 +14,27 @@ export class ServerConnectionEffects {
   ) {
   }
 
-  public appLoadEffect$ = createEffect(() => {
+  public appIsCreatedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isCreated),
-      map(() => {
-        this.service.establish();
+      tap(() => this.service.establish()),
+      map(() => isEstablishing()),
+    );
+  });
 
-        return isEstablishing();
-      }),
+  public serverConnectionIsFailedEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(isFailed),
+      map(() => isWaiting()),
+    );
+  });
+
+  public serverConnectionIsWaitingEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(isWaiting),
+      delay(environment.serverConnectionRetryTimeoutSeconds * 1000),
+      tap(() => this.service.establish()),
+      map(() => isEstablishing()),
     );
   });
 }
