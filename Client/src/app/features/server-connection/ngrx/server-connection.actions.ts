@@ -8,10 +8,6 @@ export const isEstablishing = createAction(
   `${contextName} is establishing`,
 );
 
-export const isPinging = createAction(
-  `${contextName} is pinging`,
-);
-
 export const isEstablished = createAction(
   `${contextName} is established`,
 );
