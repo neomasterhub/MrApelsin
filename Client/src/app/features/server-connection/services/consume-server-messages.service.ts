@@ -12,16 +12,8 @@ export class ConsumeServerMessagesService {
   ) {
   }
 
-  /*
-  Connects to the websocket and processes incoming messages.
-   */
   subscribe() {
     this.serverMessageReceivedGQL.subscribe()
-      .subscribe({
-        error: () => this.store.dispatch(isFailed()),
-      });
-
-    this.ping.mutate()
       .subscribe({
         error: () => this.store.dispatch(isFailed()),
       });
