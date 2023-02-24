@@ -17,6 +17,8 @@ export class ConsumeServerMessagesService {
       .pipe(
         tap(({ data }) => this.store.dispatch(serverMessageIsReceived({ serverMessage: data!.serverMessageReceived! }))),
       )
-      .subscribe();
+      .subscribe({
+        error: () => undefined,
+      });
   }
 }
