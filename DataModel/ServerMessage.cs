@@ -3,5 +3,6 @@
 public class ServerMessage
 {
     public ServerMessageType MessageType { get; set; }
-    public string Text { get; set; }
+    public ContentType ContentType { get; set; }
+    public string Content { get; set; }
 }
