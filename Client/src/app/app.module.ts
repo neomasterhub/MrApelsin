@@ -11,6 +11,7 @@ import {
   ServerMessageReducer,
   ServerStatusReducer,
 } from './features/server-connection/ngrx/server-connection.reducers';
+import { ConfigureGraphqlWsService } from './features/server-connection/services/configure-graphql-ws.service';
 import { ConsumeServerMessagesService } from './features/server-connection/services/consume-server-messages.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
@@ -35,7 +36,10 @@ import { metaReducers } from './ngrx/app.reducers';
       ServerConnectionEffects,
     ]),
   ],
-  providers: [ConsumeServerMessagesService],
+  providers: [
+    ConsumeServerMessagesService,
+    ConfigureGraphqlWsService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
