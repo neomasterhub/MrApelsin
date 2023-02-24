@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Glossy Sheen Shine';
+    src: url('GlossySheen-Shine.woff2') format('woff2'),
+        url('GlossySheen-Shine.woff') format('woff'),
+        url('GlossySheen-Shine.ttf') format('truetype'),
+        url('GlossySheen-Shine.svg#GlossySheen-Shine') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

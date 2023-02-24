@@ -32,7 +32,8 @@
             "styles": [
               "src/styles.less",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/assets/fonts/FiraMono/FiraMono.css"
+              "src/assets/fonts/FiraMono/FiraMono.css",
+              "src/assets/fonts/GlossySheen-Shine/GlossySheen-Shine.css"
             ],
             "scripts": []
           },
