@@ -12,6 +12,6 @@ export class ConfigureGraphqlWsService {
     graphqlWsClient.on('connected', () => this.store.dispatch(isEstablished()));
     graphqlWsClient.on('error', () => this.store.dispatch(isFailed()));
 
-    return isConfigured();
+    return isConfigured(); // Returns the action because in NgRx effect isConfiguring is ahead of isConfigured.
   }
 }

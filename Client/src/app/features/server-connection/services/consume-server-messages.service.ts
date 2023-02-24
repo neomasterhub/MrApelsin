@@ -18,7 +18,7 @@ export class ConsumeServerMessagesService {
         tap(({ data }) => this.store.dispatch(serverMessageIsReceived({ serverMessage: data!.serverMessageReceived! }))),
       )
       .subscribe({
-        error: () => undefined,
+        error: () => undefined, // The browser always shows a web socket connection error.
       });
   }
 }
