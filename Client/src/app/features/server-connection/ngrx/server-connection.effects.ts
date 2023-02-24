@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { delay, map, tap } from 'rxjs';
+import { delay, filter, map, tap } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { ServerMessageType } from '../../../../graphql/generated/graphql';
 import { isCreated } from '../../../ngrx/app.actions';
 import { ConsumeServerMessagesService } from '../services/consume-server-messages.service';
-import { isEstablishing, isFailed, isWaiting } from './server-connection.actions';
+import {
+  isEstablished,
+  isEstablishing,
+  isFailed,
+  isWaiting,
+  serverMessageIsReceived,
+} from './server-connection.actions';
 
 @Injectable()
 export class ServerConnectionEffects {
@@ -35,6 +42,14 @@ export class ServerConnectionEffects {
       delay(environment.serverConnectionRetryTimeoutSeconds * 1000),
       tap(() => this.service.subscribe()),
       map(() => isEstablishing()),
+    );
+  });
+
+  public serverPingIsReceivedEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(serverMessageIsReceived),
+      filter(({ serverMessage }) => serverMessage.messageType === ServerMessageType.Ping),
+      map(() => isEstablished()),
     );
   });
 }
