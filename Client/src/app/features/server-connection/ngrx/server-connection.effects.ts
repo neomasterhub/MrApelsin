@@ -9,6 +9,7 @@ import {
   isEstablished,
   isEstablishing,
   isFailed,
+  isPinging,
   isWaiting,
   serverMessageIsReceived,
 } from './server-connection.actions';
@@ -26,6 +27,13 @@ export class ServerConnectionEffects {
       ofType(isCreated),
       tap(() => this.service.subscribe()),
       map(() => isEstablishing()),
+    );
+  });
+
+  public serverConnectionIsEstablishingEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(isEstablishing),
+      map(() => isPinging()),
     );
   });
 
