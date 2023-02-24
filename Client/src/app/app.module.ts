@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FooterComponent } from './features/footer/components/footer.component';
 import { ServerConnectionEffects } from './features/server-connection/ngrx/server-connection.effects';
 import {
   ServerMessageReducer,
@@ -17,6 +18,7 @@ import { metaReducers } from './ngrx/app.reducers';
 @NgModule({
   declarations: [
     AppComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
