@@ -4,6 +4,14 @@ import { ServerMessage } from '../../../../graphql/generated/graphql';
 
 const contextName = '[Server Connection]';
 
+export const isConfiguring = createAction(
+  `${contextName} is configuring`,
+);
+
+export const isConfigured = createAction(
+  `${contextName} is configured`,
+);
+
 export const isEstablishing = createAction(
   `${contextName} is establishing`,
 );
