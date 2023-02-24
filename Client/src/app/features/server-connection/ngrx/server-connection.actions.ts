@@ -1,5 +1,6 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { environment } from '../../../../environments/environment';
+import { ServerMessage } from '../../../../graphql/generated/graphql';
 
 const contextName = '[Server Connection]';
 
@@ -17,4 +18,9 @@ export const isFailed = createAction(
 
 export const isWaiting = createAction(
   `${contextName} is waiting for retry to be established id ${environment.serverConnectionRetryTimeoutSeconds} seconds`,
+);
+
+export const serverMessageIsReceived = createAction(
+  `${contextName} server message is received`,
+  props<{ serverMessage: ServerMessage }>(),
 );
