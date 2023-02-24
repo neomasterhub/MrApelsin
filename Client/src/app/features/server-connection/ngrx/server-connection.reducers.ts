@@ -3,7 +3,7 @@ import { isEstablished, isEstablishing, isFailed } from './server-connection.act
 
 const initialState = 'unknown';
 
-export const ServerConnectionReducer = createReducer(
+export const ServerStatusReducer = createReducer(
   initialState,
   on(isEstablishing, () => 'ping'),
   on(isEstablished, () => 'online'),
