@@ -1,4 +1,31 @@
 footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
   height: 50px;
   background-color: #333;
+
+  #server-status {
+    padding: 0 15px;
+  }
+
+  .offline:after {
+    color: red;
+    content: "offline";
+  }
+
+  .online:after {
+    color: green;
+    content: "online";
+  }
+
+  .ping:after {
+    color: lightgray;
+    content: "ping...";
+  }
+
+  .undefined {
+    color: lightgray;
+    content: "undefined";
+  }
 }
