@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { ServerMessageReceivedGQL } from '../../../../graphql/generated/graphql';
-import { isFailed, serverMessageIsReceived } from '../ngrx/server-connection.actions';
+import { serverMessageIsReceived } from '../ngrx/server-connection.actions';
 
 @Injectable()
 export class ConsumeServerMessagesService {
@@ -17,8 +17,6 @@ export class ConsumeServerMessagesService {
       .pipe(
         tap(({ data }) => this.store.dispatch(serverMessageIsReceived({ serverMessage: data!.serverMessageReceived! }))),
       )
-      .subscribe({
-        error: () => this.store.dispatch(isFailed()),
-      });
+      .subscribe();
   }
 }
