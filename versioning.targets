@@ -20,7 +20,11 @@
 		<WriteLinesToFile
 			Condition="$(ClientVersionPath) != ''"
 			File="$(ClientVersionPath)"
-			Lines="export const versionNumber = '$(Version)'%3B;export const versionDatetime = '$(CurrentDatetime)'%3B"
+			Lines="// auto-generated
+export const version = {
+  versionNumber: '$(Version)',
+  versionDatetime: '$(CurrentDatetime)',
+}"
 			Overwrite="true"
 			Encoding="UTF-8" />
 
