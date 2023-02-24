@@ -6,13 +6,19 @@ footer {
   font-family: "Fira Mono", monospace;
   font-size: 10pt;
 
-  #version,
-  #server-status {
-    padding: 0 15px;
+  :first-child {
+    padding-left: 15px;
+  }
+  > div {
+    padding-right: 15px;
+  }
+
+  #copyright {
+    color: goldenrod;
   }
 
   #version {
-    color: lightgray;
+    color: slategrey;
     div {
       line-height: 1;
     }
@@ -23,22 +29,22 @@ footer {
   }
 
   .offline:after {
-    color: red;
-    content: "offline";
+    color: firebrick;
+    content: "🖤offline";
   }
 
   .online:after {
-    color: lime;
-    content: "online";
+    color: green;
+    content: "💚online";
   }
 
   .ping:after {
-    color: lightgray;
+    color: gray;
     content: "ping...";
   }
 
   .undefined {
-    color: lightgray;
+    color: gray;
     content: "undefined";
   }
 }
