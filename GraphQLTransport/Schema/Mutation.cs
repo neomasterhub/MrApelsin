@@ -13,7 +13,6 @@ public class Mutation
         var message = new ServerMessage
         {
             MessageType = ServerMessageType.Ping,
-            Text = DateTime.UtcNow.ToString(),
         };
 
         await sender.SendAsync(nameof(Subscription.ServerMessageReceived), message);
