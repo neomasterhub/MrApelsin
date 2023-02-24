@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ServerStatusModel } from '../../server-connection/models/server-status.model';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class FooterComponent {
   serverStatus$: Observable<string>;
 
-  constructor(store: Store<{ serverStatus: string }>) {
-    this.serverStatus$ = store.select(s => s.serverStatus);
+  constructor(store: Store<{ serverStatus: ServerStatusModel }>) {
+    this.serverStatus$ = store.select(s => ServerStatusModel[s.serverStatus]);
   }
 }
