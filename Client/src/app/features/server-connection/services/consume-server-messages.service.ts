@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ApolloError } from '@apollo/client';
 import { Store } from '@ngrx/store';
 import { PingGQL, ServerMessageReceivedGQL } from '../../../../graphql/generated/graphql';
 import { isFailed } from '../ngrx/server-connection.actions';
@@ -19,12 +18,12 @@ export class ConsumeServerMessagesService {
   subscribe() {
     this.serverMessageReceivedGQL.subscribe()
       .subscribe({
-        error: (error: ApolloError) => this.store.dispatch(isFailed({ error })),
+        error: () => this.store.dispatch(isFailed()),
       });
 
     this.ping.mutate()
       .subscribe({
-        error: (error: ApolloError) => this.store.dispatch(isFailed({ error })),
+        error: () => this.store.dispatch(isFailed()),
       });
   }
 }

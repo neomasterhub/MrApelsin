@@ -1,6 +1,4 @@
-import { ApolloError } from '@apollo/client';
 import { createAction, props } from '@ngrx/store';
-import { Maybe } from 'graphql/jsutils/Maybe';
 import { environment } from '../../../../environments/environment';
 import { ServerMessage } from '../../../../graphql/generated/graphql';
 
@@ -16,7 +14,6 @@ export const isEstablished = createAction(
 
 export const isFailed = createAction(
   `${contextName} is failed`,
-  props<{ error: ApolloError }>(),
 );
 
 export const isWaiting = createAction(
@@ -25,5 +22,5 @@ export const isWaiting = createAction(
 
 export const messageIsReceived = createAction(
   `${contextName} message is received`,
-  props<{ serverMessage: Maybe<ServerMessage> }>(),
+  props<{ serverMessage: ServerMessage }>(),
 );
