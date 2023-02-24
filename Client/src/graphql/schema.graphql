@@ -9,6 +9,7 @@ type Query {
 
 type Mutation {
   addAuditEvent(e: AddAuditEventInput): AuditEvent
+  ping: ServerMessage
 }
 
 type Subscription {
@@ -88,5 +89,6 @@ type ServerMessage {
 }
 
 enum ServerMessageType {
+  PING
   APP_VERSION
 }

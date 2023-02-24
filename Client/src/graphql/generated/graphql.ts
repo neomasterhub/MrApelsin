@@ -67,6 +67,7 @@ export type CollectionSegmentInfo = {
 export type Mutation = {
   __typename?: 'Mutation';
   addAuditEvent?: Maybe<AuditEvent>;
+  ping?: Maybe<ServerMessage>;
 };
 
 
@@ -94,7 +95,8 @@ export type ServerMessage = {
 };
 
 export enum ServerMessageType {
-  AppVersion = 'APP_VERSION'
+  AppVersion = 'APP_VERSION',
+  Ping = 'PING'
 }
 
 export enum SortEnumType {
@@ -107,11 +109,35 @@ export type Subscription = {
   serverMessageReceived?: Maybe<ServerMessage>;
 };
 
+export type PingMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, text?: string | null } | null };
+
 export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
 export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, text?: string | null } | null };
 
+export const PingDocument = gql`
+    mutation Ping {
+  ping {
+    messageType
+    text
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class PingGQL extends Apollo.Mutation<PingMutation, PingMutationVariables> {
+    override document = PingDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
 export const ServerMessageReceivedDocument = gql`
     subscription ServerMessageReceived {
   serverMessageReceived {
