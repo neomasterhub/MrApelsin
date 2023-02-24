@@ -4,17 +4,15 @@ import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { getMainDefinition } from '@apollo/client/utilities';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { createClient } from 'graphql-ws';
 import { environment } from '../environments/environment';
+import { graphqlWsClient } from './consts/graphql-ws-client';
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   const http = httpLink.create({
     uri: environment.graphqlOrigins.http,
   });
 
-  const ws = new GraphQLWsLink(createClient({
-    url: environment.graphqlOrigins.ws,
-  }));
+  const ws = new GraphQLWsLink(graphqlWsClient);
 
   const splitLink = split(
     ({ query }) => {
