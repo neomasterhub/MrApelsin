@@ -2,6 +2,7 @@
 using DAL;
 using DataModel;
 using HotChocolate.Subscriptions;
+using Newtonsoft.Json;
 
 namespace GraphQLTransport.Schema;
 
@@ -17,7 +18,8 @@ public class Query
         var message = new ServerMessage
         {
             MessageType = ServerMessageType.AppVersion,
-            Text = result.ToString(),
+            ContentType = ContentType.Json,
+            Content = JsonConvert.SerializeObject(result),
         };
 
         await sender.SendAsync(nameof(Subscription.ServerMessageReceived), message);
