@@ -7,9 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServerConnectionEffects } from './features/server-connection/ngrx/server-connection.effects';
 import { ServerConnectionReducer } from './features/server-connection/ngrx/server-connection.reducers';
-import {
-  EstablishServerConnectionService,
-} from './features/server-connection/services/establish-server-connection.service';
+import { ConsumeServerMessagesService, } from './features/server-connection/services/consume-server-messages.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
 
@@ -31,7 +29,7 @@ import { metaReducers } from './ngrx/app.reducers';
       ServerConnectionEffects,
     ]),
   ],
-  providers: [EstablishServerConnectionService],
+  providers: [ConsumeServerMessagesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {
