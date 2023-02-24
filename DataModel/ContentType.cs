@@ -4,6 +4,7 @@ namespace DataModel;
 
 public enum ContentType
 {
+    None,
     Text,
     Json,
 }
