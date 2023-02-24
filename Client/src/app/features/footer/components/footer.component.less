@@ -1,14 +1,25 @@
 footer {
   display: flex;
   align-items: center;
-  justify-content: end;
   height: 50px;
   background-color: #333;
+  font-family: "Fira Mono", monospace;
+  font-size: 10pt;
 
+  #version,
   #server-status {
     padding: 0 15px;
-    font-family: "Fira Mono", monospace;
-    font-size: 10pt;
+  }
+
+  #version {
+    color: lightgray;
+    div {
+      line-height: 1;
+    }
+  }
+
+  #server-status {
+    margin-left: auto;
   }
 
   .offline:after {

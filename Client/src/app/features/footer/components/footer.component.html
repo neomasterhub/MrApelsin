@@ -1,3 +1,7 @@
 <footer>
+  <div id="version">
+    <div>{{version.versionNumber}}</div>
+    <div>{{version.versionDatetime}}</div>
+  </div>
   <div id="server-status" [class]="serverStatus$|async"></div>
 </footer>
