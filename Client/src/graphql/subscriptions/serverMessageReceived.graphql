@@ -1,6 +1,7 @@
 subscription ServerMessageReceived {
   serverMessageReceived {
     messageType
-    text
+    contentType
+    content
   }
 }

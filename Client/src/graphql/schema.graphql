@@ -85,7 +85,14 @@ type AppVersion {
 
 type ServerMessage {
   messageType: ServerMessageType!
-  text: String
+  contentType: ContentType!
+  content: String
+}
+
+enum ContentType {
+  NONE
+  TEXT
+  JSON
 }
 
 enum ServerMessageType {

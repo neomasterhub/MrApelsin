@@ -1,6 +1,7 @@
 mutation Ping {
   ping {
     messageType
-    text
+    contentType
+    content
   }
 }

@@ -64,6 +64,12 @@ export type CollectionSegmentInfo = {
   hasPreviousPage: Scalars['Boolean'];
 };
 
+export enum ContentType {
+  Json = 'JSON',
+  None = 'NONE',
+  Text = 'TEXT'
+}
+
 export type Mutation = {
   __typename?: 'Mutation';
   addAuditEvent?: Maybe<AuditEvent>;
@@ -90,8 +96,9 @@ export type QueryAuditEventsArgs = {
 
 export type ServerMessage = {
   __typename?: 'ServerMessage';
+  content?: Maybe<Scalars['String']>;
+  contentType: ContentType;
   messageType: ServerMessageType;
-  text?: Maybe<Scalars['String']>;
 };
 
 export enum ServerMessageType {
@@ -112,18 +119,19 @@ export type Subscription = {
 export type PingMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, text?: string | null } | null };
+export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
 
 export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, text?: string | null } | null };
+export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
 
 export const PingDocument = gql`
     mutation Ping {
   ping {
     messageType
-    text
+    contentType
+    content
   }
 }
     `;
@@ -142,7 +150,8 @@ export const ServerMessageReceivedDocument = gql`
     subscription ServerMessageReceived {
   serverMessageReceived {
     messageType
-    text
+    contentType
+    content
   }
 }
     `;

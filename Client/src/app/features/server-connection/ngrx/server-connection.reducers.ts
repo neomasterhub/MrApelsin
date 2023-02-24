@@ -15,7 +15,8 @@ export const ServerMessageReducer = createReducer(
     datetime: new Date(),
     payload: {
       messageType: serverMessage.messageType,
-      text: serverMessage.text,
+      contentType: serverMessage.contentType,
+      content: serverMessage.content,
     },
   })),
 );
