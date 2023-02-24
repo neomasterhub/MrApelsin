@@ -12,6 +12,7 @@ import {
   ServerStatusReducer,
 } from './features/server-connection/ngrx/server-connection.reducers';
 import { ConsumeServerMessagesService } from './features/server-connection/services/consume-server-messages.service';
+import { PingServerService } from './features/server-connection/services/ping-server.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
 
@@ -35,7 +36,10 @@ import { metaReducers } from './ngrx/app.reducers';
       ServerConnectionEffects,
     ]),
   ],
-  providers: [ConsumeServerMessagesService],
+  providers: [
+    ConsumeServerMessagesService,
+    PingServerService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
