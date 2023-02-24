@@ -4,7 +4,7 @@ import { map, tap } from 'rxjs';
 import { isCreated } from '../../../ngrx/app.actions';
 import { ConfigureGraphqlWsService } from '../services/configure-graphql-ws.service';
 import { ConsumeServerMessagesService } from '../services/consume-server-messages.service';
-import { isConfiguring } from './server-connection.actions';
+import { isConfigured, isConfiguring, isEstablishing } from './server-connection.actions';
 
 @Injectable()
 export class ServerConnectionEffects {
@@ -20,6 +20,14 @@ export class ServerConnectionEffects {
       ofType(isCreated),
       tap(() => this.configureGraphqlWsService.configure()),
       map(() => isConfiguring()),
+    );
+  });
+
+  public serverConnectionIsConfiguredEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(isConfigured),
+      tap(() => this.consumeServerMessagesService.subscribe()),
+      map(() => isEstablishing()),
     );
   });
 }
