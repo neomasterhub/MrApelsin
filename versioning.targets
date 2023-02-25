@@ -1,32 +1,32 @@
 <Project>
-	<Target Name="WriteVersion" AfterTargets="Rebuild">
+    <Target Name="WriteVersion" AfterTargets="Rebuild">
 
-		<PropertyGroup>
-			<CurrentDatetime>$([System.DateTime]::Now.ToString(yyyy.MM.dd HH:mm:ss))</CurrentDatetime>
-		</PropertyGroup>
+        <PropertyGroup>
+            <CurrentDatetime>$([System.DateTime]::Now.ToString(yyyy.MM.dd HH:mm:ss))</CurrentDatetime>
+        </PropertyGroup>
 
-		<ItemGroup>
-			<AssemblyAttributes Include="Common.Versioning.AppVersion">
-				<_Parameter1>$(Version)</_Parameter1>
-				<_Parameter2>$(CurrentDatetime)</_Parameter2>
-			</AssemblyAttributes>
-		</ItemGroup>
+        <ItemGroup>
+            <AssemblyAttributes Include="Common.Versioning.AppVersion">
+                <_Parameter1>$(Version)</_Parameter1>
+                <_Parameter2>$(CurrentDatetime)</_Parameter2>
+            </AssemblyAttributes>
+        </ItemGroup>
 
-		<WriteCodeFragment
-			OutputFile="AssemblyInfo.cs"
-			AssemblyAttributes="@(AssemblyAttributes)"
-			Language="C#" />
+        <WriteCodeFragment
+            OutputFile="AssemblyInfo.cs"
+            AssemblyAttributes="@(AssemblyAttributes)"
+            Language="C#" />
 
-		<WriteLinesToFile
-			Condition="$(ClientVersionPath) != ''"
-			File="$(ClientVersionPath)"
-			Lines="// auto-generated
+        <WriteLinesToFile
+            Condition="$(ClientVersionPath) != ''"
+            File="$(ClientVersionPath)"
+            Lines="// auto-generated
 export const version = {
   versionNumber: '$(Version)',
   versionDatetime: '$(CurrentDatetime)',
 }"
-			Overwrite="true"
-			Encoding="UTF-8" />
+            Overwrite="true"
+            Encoding="UTF-8" />
 
-	</Target>
+    </Target>
 </Project>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { version } from '../../../consts/app-version.consts';
+import { version } from '../../../consts/app-version';
 import { ServerStatusModel } from '../../server-connection/models/server-status.model';
 
 @Component({

@@ -5,7 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<Version>1.0.0.0</Version>
-		<ClientVersionPath>$(SolutionDir)Client\src\app\consts\app-version.consts.ts</ClientVersionPath>
+		<ClientVersionPath>$(SolutionDir)Client\src\app\consts\app-version.ts</ClientVersionPath>
 	</PropertyGroup>
 
 	<ItemGroup>
