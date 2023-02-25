@@ -24,7 +24,7 @@
 export const version = {
   versionNumber: '$(Version)',
   versionDatetime: '$(CurrentDatetime)',
-}"
+}%3B"
             Overwrite="true"
             Encoding="UTF-8" />
 

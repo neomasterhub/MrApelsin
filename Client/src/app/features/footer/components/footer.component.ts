@@ -11,7 +11,9 @@ import { ServerStatusModel } from '../../server-connection/models/server-status.
 })
 export class FooterComponent {
   serverStatus$: Observable<string>;
+
   version = version;
+
   currentYear = new Date().getFullYear();
 
   constructor(store: Store<{ serverStatus: ServerStatusModel }>) {
