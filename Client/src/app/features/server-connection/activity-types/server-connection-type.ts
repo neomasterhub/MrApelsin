@@ -1,3 +1,3 @@
 export enum ServerConnectionType {
-  webSocket,
+  webSocket = 'Web Socket',
 }
