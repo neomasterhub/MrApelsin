@@ -2,12 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { ServerConnectionType } from '../app/features/server-connection/activity-types/server-connection-type';
+
 export const environment = {
   production: false,
   graphqlOrigins: {
     http: 'http://localhost:5008/graphql',
     ws: 'ws://localhost:5008/graphql',
   },
+  serverConnectionType: ServerConnectionType.webSocket,
   serverConnectionRetryTimeoutSeconds: 10,
 };
 
