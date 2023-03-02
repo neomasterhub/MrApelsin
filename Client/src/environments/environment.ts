@@ -13,7 +13,7 @@ export const environment = {
   serverConnection: {
     connectionType: ServerConnectionType.webSocket,
     retryTimeoutSeconds: 10,
-  }
+  },
 };
 
 /*
