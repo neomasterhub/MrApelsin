@@ -21,7 +21,7 @@
             Condition="$(ClientVersionPath) != ''"
             File="$(ClientVersionPath)"
             Lines="// auto-generated
-export const version = {
+export const appVersion = {
   versionNumber: '$(Version)',
   versionDatetime: '$(CurrentDatetime)',
 }%3B"
