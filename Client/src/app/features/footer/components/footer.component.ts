@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { version } from '../../../consts/app-version';
-import { ServerStatusModel } from '../../server-connection/models/server-status.model';
+import { ServerStatus } from '../../server-connection/activity-types/server-status';
 
 @Component({
   selector: 'app-footer',
@@ -16,7 +16,7 @@ export class FooterComponent {
 
   currentYear = new Date().getFullYear();
 
-  constructor(store: Store<{ serverStatus: ServerStatusModel }>) {
-    this.serverStatus$ = store.select(s => ServerStatusModel[s.serverStatus]);
+  constructor(store: Store<{ serverStatus: ServerStatus }>) {
+    this.serverStatus$ = store.select(s => ServerStatus[s.serverStatus]);
   }
 }
