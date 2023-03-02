@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { version } from '../../../consts/app-version';
+import { appVersion } from '../../../consts/app-version';
 import { ServerStatus } from '../../server-connection/activity-types/server-status';
 
 @Component({
@@ -12,7 +12,7 @@ import { ServerStatus } from '../../server-connection/activity-types/server-stat
 export class FooterComponent {
   serverStatus$: Observable<string>;
 
-  version = version;
+  version = appVersion;
 
   currentYear = new Date().getFullYear();
 
