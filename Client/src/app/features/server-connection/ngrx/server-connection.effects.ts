@@ -13,7 +13,7 @@ export class ServerConnectionEffects {
   public appIsCreatedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isCreated),
-      map(() => typeIsDefined({ connectionType: environment.serverConnectionType })),
+      map(() => typeIsDefined({ connectionType: environment.serverConnection.connectionType })),
     );
   });
 }

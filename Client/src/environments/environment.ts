@@ -10,8 +10,10 @@ export const environment = {
     http: 'http://localhost:5008/graphql',
     ws: 'ws://localhost:5008/graphql',
   },
-  serverConnectionType: ServerConnectionType.webSocket,
-  serverConnectionRetryTimeoutSeconds: 10,
+  serverConnection: {
+    connectionType: ServerConnectionType.webSocket,
+    retryTimeoutSeconds: 10,
+  }
 };
 
 /*
