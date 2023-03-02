@@ -12,8 +12,9 @@ import {
   ServerMessageReducer,
   ServerStatusReducer,
 } from './features/server-connection/ngrx/server-connection.reducers';
-import { ConfigureGraphqlWsService } from './features/server-connection/services/configure-graphql-ws.service';
-import { ConsumeServerMessagesService } from './features/server-connection/services/consume-server-messages.service';
+import { WsServerConnectionEffects } from './features/server-connection/ws/ngrx/ws-server-connection.effects';
+import { ConfigureGraphqlWsService } from './features/server-connection/ws/services/configure-graphql-ws.service';
+import { ConsumeWsMessagesService } from './features/server-connection/ws/services/consume-ws-messages.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
 
@@ -36,11 +37,12 @@ import { metaReducers } from './ngrx/app.reducers';
     }),
     EffectsModule.forRoot([
       ServerConnectionEffects,
+      WsServerConnectionEffects,
     ]),
   ],
   providers: [
-    ConsumeServerMessagesService,
     ConfigureGraphqlWsService,
+    ConsumeWsMessagesService,
   ],
   bootstrap: [AppComponent],
 })
