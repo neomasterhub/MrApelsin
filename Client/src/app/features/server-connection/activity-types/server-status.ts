@@ -1,4 +1,4 @@
-export enum ServerStatusModel {
+export enum ServerStatus {
   unknown,
   ping,
   offline,
