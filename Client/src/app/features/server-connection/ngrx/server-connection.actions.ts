@@ -1,8 +1,14 @@
 import { createAction, props } from '@ngrx/store';
 import { environment } from '../../../../environments/environment';
 import { ServerMessage } from '../../../../graphql/generated/graphql';
+import { ServerConnectionType } from '../activity-types/server-connection-type';
 
 const contextName = '[Server Connection]';
+
+export const typeIsDefined = createAction(
+  `${contextName} type is defined`,
+  props<{ connectionType: ServerConnectionType }>(),
+);
 
 export const isConfigured = createAction(
   `${contextName} is configured`,
