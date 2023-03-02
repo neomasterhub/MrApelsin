@@ -9,6 +9,7 @@ import { FooterComponent } from './features/footer/components/footer.component';
 import { HeaderComponent } from './features/header/header.component';
 import { ServerConnectionEffects } from './features/server-connection/ngrx/server-connection.effects';
 import {
+  ServerConnectionTypeReducer,
   ServerMessageReducer,
   ServerStatusReducer,
 } from './features/server-connection/ngrx/server-connection.reducers';
@@ -32,6 +33,7 @@ import { metaReducers } from './ngrx/app.reducers';
     StoreModule.forRoot({
       serverStatus: ServerStatusReducer,
       serverMessage: ServerMessageReducer,
+      serverConnectionType: ServerConnectionTypeReducer,
     }, {
       metaReducers,
     }),

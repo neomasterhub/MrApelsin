@@ -1,7 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
+import { environment } from '../../../../environments/environment';
 import { ServerStatus } from '../activity-types/server-status';
 import { IServerMessageModel } from '../models/server-message.model';
-import { isEstablished, isEstablishing, isFailed, serverMessageIsReceived } from './server-connection.actions';
+import {
+  isEstablished,
+  isEstablishing,
+  isFailed,
+  serverMessageIsReceived,
+  typeIsDefined,
+} from './server-connection.actions';
+
+export const ServerConnectionTypeReducer = createReducer(
+  environment.serverConnection.connectionType,
+  on(typeIsDefined, (state, { connectionType }) => connectionType),
+);
 
 export const ServerStatusReducer = createReducer(
   ServerStatus.unknown,
