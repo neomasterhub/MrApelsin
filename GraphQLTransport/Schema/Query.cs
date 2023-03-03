@@ -26,4 +26,6 @@ public class Query
 
         return result;
     }
+
+    public ServerMessage Ping() => new();
 }
