@@ -30,6 +30,7 @@ export const ServerMessageReducer = createReducer(
       messageType: serverMessage.messageType,
       contentType: serverMessage.contentType,
       content: serverMessage.content,
+      utcDatetime: serverMessage.utcDatetime,
     },
   })),
 );

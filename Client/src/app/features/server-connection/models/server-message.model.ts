@@ -1,5 +1,5 @@
 import { Maybe } from 'graphql/jsutils/Maybe';
-import { ContentType, ServerMessageType } from '../../../../graphql/generated/graphql';
+import { ContentType, Scalars, ServerMessageType } from '../../../../graphql/generated/graphql';
 
 export interface IServerMessageModel {
   datetime: Date,
@@ -7,5 +7,6 @@ export interface IServerMessageModel {
     messageType: ServerMessageType,
     contentType: ContentType,
     content: Maybe<string>,
+    utcDatetime: Scalars['DateTime'],
   }
 }
