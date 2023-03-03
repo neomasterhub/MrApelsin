@@ -85,6 +85,7 @@ export type Query = {
   __typename?: 'Query';
   appVersion?: Maybe<AppVersion>;
   auditEvents?: Maybe<AuditEventsCollectionSegment>;
+  ping?: Maybe<ServerMessage>;
 };
 
 
@@ -99,6 +100,7 @@ export type ServerMessage = {
   content?: Maybe<Scalars['String']>;
   contentType: ContentType;
   messageType: ServerMessageType;
+  utcDatetime: Scalars['DateTime'];
 };
 
 export enum ServerMessageType {
@@ -121,6 +123,11 @@ export type PingMutationVariables = Exact<{ [key: string]: never; }>;
 
 export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
 
+export type GetHttpPongQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetHttpPongQuery = { __typename?: 'Query', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
+
 export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -141,6 +148,26 @@ export const PingDocument = gql`
   })
   export class PingGQL extends Apollo.Mutation<PingMutation, PingMutationVariables> {
     override document = PingDocument;
+
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const GetHttpPongDocument = gql`
+    query GetHttpPong {
+  ping {
+    messageType
+    contentType
+    content
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class GetHttpPongGQL extends Apollo.Query<GetHttpPongQuery, GetHttpPongQueryVariables> {
+    override document = GetHttpPongDocument;
 
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
