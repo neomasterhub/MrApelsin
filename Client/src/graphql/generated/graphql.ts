@@ -126,7 +126,7 @@ export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'Ser
 export type GetHttpPongQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetHttpPongQuery = { __typename?: 'Query', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
+export type GetHttpPongQuery = { __typename?: 'Query', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null, utcDatetime: any } | null };
 
 export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
@@ -159,6 +159,7 @@ export const GetHttpPongDocument = gql`
     messageType
     contentType
     content
+    utcDatetime
   }
 }
     `;

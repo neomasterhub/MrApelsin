@@ -1,0 +1,8 @@
+query GetHttpPong {
+  ping {
+    messageType
+    contentType
+    content
+    utcDatetime
+  }
+}
