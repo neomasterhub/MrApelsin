@@ -131,7 +131,7 @@ export type GetHttpPongQuery = { __typename?: 'Query', ping?: { __typename?: 'Se
 export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
+export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null, utcDatetime: any } | null };
 
 export const PingDocument = gql`
     mutation Ping {
@@ -180,6 +180,7 @@ export const ServerMessageReceivedDocument = gql`
     messageType
     contentType
     content
+    utcDatetime
   }
 }
     `;

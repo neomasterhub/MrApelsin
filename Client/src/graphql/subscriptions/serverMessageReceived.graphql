@@ -3,5 +3,6 @@ subscription ServerMessageReceived {
     messageType
     contentType
     content
+    utcDatetime
   }
 }
