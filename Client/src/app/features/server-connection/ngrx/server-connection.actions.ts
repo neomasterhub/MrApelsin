@@ -27,7 +27,7 @@ export const isFailed = createAction(
 );
 
 export const isWaiting = createAction(
-  `${contextName} is waiting for retry to be established in ${environment.serverConnection.retryTimeoutSeconds} seconds`,
+  `${contextName} is waiting for retry to be established in ${environment.serverConnection.wsConnectionRetryIntervalSeconds} seconds`,
 );
 
 export const serverMessageIsReceived = createAction(

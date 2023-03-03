@@ -12,7 +12,8 @@ export const environment = {
   },
   serverConnection: {
     connectionType: ServerConnectionType.webSocket,
-    retryTimeoutSeconds: 10,
+    wsConnectionRetryIntervalSeconds: 10,
+    longPollingIntervalSeconds: 30,
   },
 };
 
