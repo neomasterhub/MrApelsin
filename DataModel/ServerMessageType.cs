@@ -3,7 +3,7 @@
 public enum ServerMessageType
 {
     /// <summary>
-    /// The first message sent when a connection is established.
+    /// Connection test message.
     /// </summary>
     Ping = 0,
 
