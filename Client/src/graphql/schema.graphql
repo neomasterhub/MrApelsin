@@ -5,6 +5,7 @@ type Query {
     order: [AuditEventSortInput!]
   ): AuditEventsCollectionSegment
   appVersion: AppVersion
+  ping: ServerMessage
 }
 
 type Mutation {
@@ -68,25 +69,26 @@ type AuditEvent {
   description: String
 }
 
-input AddAuditEventInput {
-  subject: String
-  description: String
-}
-
 """
 The `DateTime` scalar represents an ISO-8601 compliant date time type.
 """
 scalar DateTime
+
+type ServerMessage {
+  messageType: ServerMessageType!
+  contentType: ContentType!
+  content: String
+  utcDatetime: DateTime!
+}
 
 type AppVersion {
   versionNumber: String
   buildDatetime: String
 }
 
-type ServerMessage {
-  messageType: ServerMessageType!
-  contentType: ContentType!
-  content: String
+input AddAuditEventInput {
+  subject: String
+  description: String
 }
 
 enum ContentType {
