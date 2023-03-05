@@ -2,7 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { ILongPollingOperation } from '../app/activity-types/long-polling-operation';
 import { ServerConnectionType } from '../app/features/server-connection/activity-types/server-connection-type';
+
+const longPollingOperations: ILongPollingOperation[] = [
+  {
+    name: 'GetHttpPong',
+    delay: 10000,
+  }
+];
 
 export const environment = {
   production: false,
@@ -15,6 +23,9 @@ export const environment = {
     webSocket: {
       attemptIntervalSeconds: 10,
     },
+    longPolling: {
+      longPollingOperations,
+    }
   },
 };
 
