@@ -9,7 +9,7 @@ import { ConfigureGraphqlWsService } from '../services/configure-graphql-ws.serv
 import { ConsumeWsMessagesService } from '../services/consume-ws-messages.service';
 
 @Injectable()
-export class WsServerConnectionEffects {
+export class WebSocketServerConnectionEffects {
   constructor(
     private readonly actions$: Actions,
     private readonly configureGraphqlWsService: ConfigureGraphqlWsService,
