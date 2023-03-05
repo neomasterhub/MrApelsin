@@ -8,9 +8,6 @@ import { isEstablished } from '../../ngrx/server-connection.actions';
 
 @Injectable()
 export class GetHttpPongService {
-  readonly pollInterval = environment.serverConnection.longPolling.operations
-    .find((o) => o.name === 'GetHttpPong')!.delay;
-
   readonly valueChanges: Observable<ApolloQueryResult<GetHttpPongQuery>>;
 
   constructor(
@@ -18,7 +15,7 @@ export class GetHttpPongService {
     private readonly store: Store,
   ) {
     this.valueChanges = getHttpPongGQL.watch({}, {
-      pollInterval: this.pollInterval,
+      pollInterval: environment.serverConnection.attemptIntervalSeconds * 1000,
       fetchPolicy: 'network-only',
     }).valueChanges;
   }
