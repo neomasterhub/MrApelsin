@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { GetHttpPongGQL } from '../../../../../graphql/generated/graphql';
+import { ApolloQueryResult } from '@apollo/client';
+import { Observable } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
+import { GetHttpPongGQL, GetHttpPongQuery } from '../../../../../graphql/generated/graphql';
 
 @Injectable()
 export class GetHttpPongService {
-  constructor(
-    private readonly getHttpPongGQL: GetHttpPongGQL,
-  ) {
+  readonly pollInterval = environment.serverConnection.longPolling.longPollingOperations
+    .find((o) => o.name === 'GetHttpPong')!.delay;
+
+  readonly valueChanges: Observable<ApolloQueryResult<GetHttpPongQuery>>;
+
+  constructor(getHttpPongGQL: GetHttpPongGQL) {
+    this.valueChanges = getHttpPongGQL.watch({}, {
+      pollInterval: this.pollInterval,
+      fetchPolicy: 'network-only',
+    }).valueChanges;
   }
 
   ping() {
-    this.getHttpPongGQL.fetch()
-      .subscribe(console.log);
+    this.valueChanges.subscribe(console.log);
   }
 }
