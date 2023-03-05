@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { filter, map, tap } from 'rxjs';
 import { ServerConnectionType } from '../../activity-types/server-connection-type';
 import { isEstablishing, typeIsDefined } from '../../ngrx/server-connection.actions';
-import { GetHttpPongService } from './get-http-pong.service';
+import { GetHttpPongService } from '../services/get-http-pong.service';
 
 @Injectable()
 export class LongPollingServerConnectionEffects {
