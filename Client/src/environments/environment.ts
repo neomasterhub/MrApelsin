@@ -11,7 +11,7 @@ export const environment = {
     ws: 'ws://localhost:5008/graphql',
   },
   serverConnection: {
-    connectionType: ServerConnectionType.webSocket,
+    connectionType: ServerConnectionType.longPolling,
     wsConnectionRetryIntervalSeconds: 10,
     longPollingIntervalSeconds: 30,
   },
