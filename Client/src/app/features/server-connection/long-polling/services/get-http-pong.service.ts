@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
-import { ApolloQueryResult } from '@apollo/client';
 import { Store } from '@ngrx/store';
-import { Observable, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
-import { GetHttpPongGQL, GetHttpPongQuery } from '../../../../../graphql/generated/graphql';
+import { GetHttpPongGQL } from '../../../../../graphql/generated/graphql';
 import { isEstablished } from '../../ngrx/server-connection.actions';
 
 @Injectable()
 export class GetHttpPongService {
-  readonly valueChanges: Observable<ApolloQueryResult<GetHttpPongQuery>>;
+  readonly valueChanges;
 
   constructor(
-    getHttpPongGQL: GetHttpPongGQL,
+    private readonly getHttpPongGQL: GetHttpPongGQL,
     private readonly store: Store,
   ) {
     this.valueChanges = getHttpPongGQL.watch({}, {
