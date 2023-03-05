@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ApolloQueryResult } from '@apollo/client';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, tap } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { GetHttpPongGQL, GetHttpPongQuery } from '../../../../../graphql/generated/graphql';
+import { isEstablished } from '../../ngrx/server-connection.actions';
 
 @Injectable()
 export class GetHttpPongService {
@@ -11,7 +13,10 @@ export class GetHttpPongService {
 
   readonly valueChanges: Observable<ApolloQueryResult<GetHttpPongQuery>>;
 
-  constructor(getHttpPongGQL: GetHttpPongGQL) {
+  constructor(
+    getHttpPongGQL: GetHttpPongGQL,
+    private readonly store: Store,
+  ) {
     this.valueChanges = getHttpPongGQL.watch({}, {
       pollInterval: this.pollInterval,
       fetchPolicy: 'network-only',
@@ -19,6 +24,10 @@ export class GetHttpPongService {
   }
 
   ping() {
-    this.valueChanges.subscribe(console.log);
+    this.valueChanges
+      .pipe(
+        tap(() => this.store.dispatch(isEstablished())),
+      )
+      .subscribe();
   }
 }
