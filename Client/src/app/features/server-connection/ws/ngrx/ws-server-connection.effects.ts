@@ -42,7 +42,7 @@ export class WsServerConnectionEffects {
   public serverConnectionIsWaitingEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isWaiting),
-      delay(environment.serverConnection.wsConnectionRetryIntervalSeconds * 1000),
+      delay(environment.serverConnection.webSocket.attemptIntervalSeconds * 1000),
       tap(() => this.consumeWsMessagesService.subscribe()),
       map(() => isEstablishing()),
     );
