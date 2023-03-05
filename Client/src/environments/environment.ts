@@ -24,7 +24,7 @@ export const environment = {
       attemptIntervalSeconds: 2,
     },
     longPolling: {
-      longPollingOperations,
+      operations: longPollingOperations,
     },
   },
 };
