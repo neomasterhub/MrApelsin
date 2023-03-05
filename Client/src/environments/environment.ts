@@ -20,9 +20,7 @@ export const environment = {
   },
   serverConnection: {
     connectionType: ServerConnectionType.longPolling,
-    webSocket: {
-      attemptIntervalSeconds: 10,
-    },
+    attemptIntervalSeconds: 10,
     longPolling: {
       operations: longPollingOperations,
     },

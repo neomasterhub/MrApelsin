@@ -41,7 +41,7 @@ export class WebSocketServerConnectionEffects {
       ofType(isWaiting),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),
       filter(([, serverConnectionType]) => serverConnectionType == ServerConnectionType.webSocket),
-      delay(environment.serverConnection.webSocket.attemptIntervalSeconds * 1000),
+      delay(environment.serverConnection.attemptIntervalSeconds * 1000),
       tap(() => this.consumeWsMessagesService.subscribe()),
       map(() => isEstablishing()),
     );
