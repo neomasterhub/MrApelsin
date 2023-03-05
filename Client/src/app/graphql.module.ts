@@ -7,16 +7,16 @@ import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { environment } from '../environments/environment';
 import { graphqlWsClient } from './consts/graphql-ws-client';
-import { retryLinkOptions } from './consts/retry-link-options';
+import { RetryLinkService } from './services/retry-link.service';
 
-export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+export function createApollo(httpLink: HttpLink, retryLinkService: RetryLinkService): ApolloClientOptions<any> {
   const splitLinkHttp = httpLink.create({
     uri: environment.graphqlOrigins.http,
   });
 
   const splitLinkWs = new GraphQLWsLink(graphqlWsClient);
 
-  const splitLink = new RetryLink(retryLinkOptions)
+  const splitLink = new RetryLink(retryLinkService.retryLinkOptions)
     .split(
       ({ query }) => {
         const definition = getMainDefinition(query);
@@ -39,10 +39,14 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 @NgModule({
   exports: [ApolloModule],
   providers: [
+    RetryLinkService,
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
-      deps: [HttpLink],
+      deps: [
+        HttpLink,
+        RetryLinkService,
+      ],
     },
   ],
 })

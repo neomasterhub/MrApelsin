@@ -8,7 +8,7 @@ import { ServerConnectionType } from '../app/features/server-connection/activity
 const longPollingOperations: ILongPollingOperation[] = [
   {
     name: 'GetHttpPong',
-    delay: 2000,
+    delay: 5000,
   },
 ];
 
@@ -21,7 +21,7 @@ export const environment = {
   serverConnection: {
     connectionType: ServerConnectionType.longPolling,
     webSocket: {
-      attemptIntervalSeconds: 2,
+      attemptIntervalSeconds: 10,
     },
     longPolling: {
       operations: longPollingOperations,
