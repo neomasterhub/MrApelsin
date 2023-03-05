@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './features/footer/components/footer.component';
 import { HeaderComponent } from './features/header/header.component';
+import { GetHttpPongService } from './features/server-connection/long-polling/services/get-http-pong.service';
 import { ServerConnectionEffects } from './features/server-connection/ngrx/server-connection.effects';
 import {
   ServerConnectionTypeReducer,
@@ -45,6 +46,7 @@ import { metaReducers } from './ngrx/app.reducers';
   providers: [
     ConfigureGraphqlWsService,
     ConsumeWsMessagesService,
+    GetHttpPongService,
   ],
   bootstrap: [AppComponent],
 })
