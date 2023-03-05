@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { delay, filter, map, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { ServerConnectionType } from '../../activity-types/server-connection-type';
-import { isConfigured, isEstablishing, isFailed, isWaiting, typeIsDefined } from '../../ngrx/server-connection.actions';
+import { isConfigured, isEstablishing, isWaiting, typeIsDefined } from '../../ngrx/server-connection.actions';
 import { ConfigureGraphqlWsService } from '../services/configure-graphql-ws.service';
 import { ConsumeWsMessagesService } from '../services/consume-ws-messages.service';
 
@@ -13,6 +14,7 @@ export class WsServerConnectionEffects {
     private readonly actions$: Actions,
     private readonly configureGraphqlWsService: ConfigureGraphqlWsService,
     private readonly consumeWsMessagesService: ConsumeWsMessagesService,
+    private readonly store: Store<{ serverConnectionType: ServerConnectionType }>,
   ) {
   }
 
@@ -27,21 +29,18 @@ export class WsServerConnectionEffects {
   public serverConnectionIsConfiguredEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isConfigured),
+      withLatestFrom(this.store.select(s => s.serverConnectionType)),
+      filter(([, serverConnectionType]) => serverConnectionType == ServerConnectionType.webSocket),
       tap(() => this.consumeWsMessagesService.subscribe()),
       map(() => isEstablishing()),
-    );
-  });
-
-  public serverConnectionIsFailedEffect$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(isFailed),
-      map(() => isWaiting()),
     );
   });
 
   public serverConnectionIsWaitingEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isWaiting),
+      withLatestFrom(this.store.select(s => s.serverConnectionType)),
+      filter(([, serverConnectionType]) => serverConnectionType == ServerConnectionType.webSocket),
       delay(environment.serverConnection.webSocket.attemptIntervalSeconds * 1000),
       tap(() => this.consumeWsMessagesService.subscribe()),
       map(() => isEstablishing()),
