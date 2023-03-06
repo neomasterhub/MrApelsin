@@ -3,6 +3,7 @@ import { ILongPollingOperation } from '../activity-types/long-polling-operation'
 
 export const longPollingOperations: ILongPollingOperation[] = [
   {
+    label: 'Server Connection Check',
     name: environment.serverConnection.longPolling.operationName,
     delay: environment.serverConnection.attemptIntervalSeconds * 1000,
   },
