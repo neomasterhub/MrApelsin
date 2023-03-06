@@ -10,6 +10,10 @@ export const typeIsDefined = createAction(
   props<{ connectionType: ServerConnectionType }>(),
 );
 
+export const engineIsStarted = createAction(
+  `${contextName} engine is started`,
+);
+
 export const isConfigured = createAction(
   `${contextName} is configured`,
 );
