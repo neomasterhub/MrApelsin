@@ -23,6 +23,9 @@ import {
 import { ConsumeWsMessagesService } from './features/server-connection/web-socket/services/consume-ws-messages.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
+import { HttpLinkService } from './services/http-link.service';
+import { RetryLinkService } from './services/retry-link.service';
+import { WebSocketLinkService } from './services/web-socket-link.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { metaReducers } from './ngrx/app.reducers';
   providers: [
     ConsumeWsMessagesService,
     GetHttpPongService,
+    HttpLinkService,
+    WebSocketLinkService,
+    RetryLinkService,
   ],
   bootstrap: [AppComponent],
 })
