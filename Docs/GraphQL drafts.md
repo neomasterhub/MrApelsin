@@ -1,10 +1,11 @@
-# Drafts
+# GraphQL drafts
 
 **Apollo Client**
  + [Pure Query](#1)
  + [Pure Subscription](#2)
  + [Typed Subscription](#3)
  + [Ping Mutation](#4)
+ + [Double Next in Long Polling](#5)
 
 ## <a name="1"></a> Pure Query
 ```ts
@@ -155,3 +156,45 @@ export class PingServerService {
 }
 
 ```
+## <a name="5"></a> Double Next in Long Polling
+`next[i] event` -> `{request event, response event}`
+
+`useInitialLoading: true` - `i == 0`
+
+`notifyOnNetworkStatusChange: true` - `i > 0`
+
+```ts
+@Injectable()
+export class GetHttpPongService {
+  readonly valueChanges;
+
+  constructor(
+    private readonly getHttpPongGQL: GetHttpPongGQL,
+    private readonly store: Store,
+  ) {
+    this.valueChanges = getHttpPongGQL.watch({}, {
+      pollInterval: environment.serverConnection.attemptIntervalSeconds * 1000,
+      fetchPolicy: 'network-only',
+      useInitialLoading: true,
+      notifyOnNetworkStatusChange: true,
+    }).valueChanges;
+  }
+
+  ping() {
+    this.valueChanges
+      .pipe(
+        tap(({ data, loading, networkStatus }) => {
+          console.log({
+            event: loading ? 'request start' : 'response received',
+            loading,
+            networkStatus,
+            data: data?.ping?.utcDatetime,
+          });
+        })
+      )
+      .subscribe();
+  }
+}
+```
+
+![Double Next in Long Polling](double-next-in-long-polling.png)

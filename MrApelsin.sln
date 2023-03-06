@@ -41,8 +41,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppInfo", "AppInfo\AppInfo.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{EEB8FF8F-113C-4770-8464-0142944052E3}"
 	ProjectSection(SolutionItems) = preProject
-		Docs\Drafts.md = Docs\Drafts.md
 		Docs\README.md = Docs\README.md
+		Docs\GraphQL drafts.md = Docs\GraphQL drafts.md
 	EndProjectSection
 EndProject
 Global
