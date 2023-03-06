@@ -17,9 +17,7 @@ export function createApollo(splitLinkService: SplitLinkService): ApolloClientOp
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
-      deps: [
-        SplitLinkService,
-      ],
+      deps: [SplitLinkService],
     },
   ],
 })
