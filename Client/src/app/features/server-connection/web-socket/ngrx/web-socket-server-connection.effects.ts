@@ -25,9 +25,11 @@ export class WebSocketServerConnectionEffects {
     );
   });
 
-  public serverConnectionIsDefinedEffect1$ = createEffect(() => {
+  public serverConnectionEngineIsStartedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(engineIsStarted),
+      withLatestFrom(this.store.select(s => s.serverConnectionType)),
+      filter(([, serverConnectionType]) => serverConnectionType == ServerConnectionType.webSocket),
       map(() => isEstablishing()),
     );
   });
