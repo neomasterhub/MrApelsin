@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { filter, map, tap, withLatestFrom } from 'rxjs';
 import { ServerConnectionType } from '../../activity-types/server-connection-type';
-import { isEstablished, isEstablishing, isWaiting, typeIsDefined } from '../../ngrx/server-connection.actions';
+import { engineIsStarted, isEstablished, isWaiting, typeIsDefined } from '../../ngrx/server-connection.actions';
 import { GetHttpPongService } from '../services/get-http-pong.service';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class LongPollingServerConnectionEffects {
       ofType(typeIsDefined),
       filter((a) => a.connectionType === ServerConnectionType.longPolling),
       tap(() => this.getHttpPongService.ping()),
-      map(() => isEstablishing()),
+      map(() => engineIsStarted()),
     );
   });
 

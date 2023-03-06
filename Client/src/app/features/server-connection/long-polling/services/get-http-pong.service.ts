@@ -16,7 +16,7 @@ export class GetHttpPongService {
     this.valueChanges = getHttpPongGQL.watch({}, {
       pollInterval: environment.serverConnection.attemptIntervalSeconds * 1000,
       fetchPolicy: 'network-only',
-      useInitialLoading: false,
+      useInitialLoading: true,
       notifyOnNetworkStatusChange: true,
     }).valueChanges;
   }
@@ -24,13 +24,13 @@ export class GetHttpPongService {
   ping() {
     this.valueChanges
       .pipe(
-        tap(({ data, loading, networkStatus }) => {
+        tap(({ loading }) => {
           if (loading) {
             this.store.dispatch(isEstablishing());
           } else {
             this.store.dispatch(isEstablished());
           }
-        })
+        }),
       )
       .subscribe();
   }
