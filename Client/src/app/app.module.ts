@@ -55,8 +55,8 @@ import { WebSocketLinkService } from './services/web-socket-link.service';
     ConsumeWsMessagesService,
     GetHttpPongService,
     HttpLinkService,
-    WebSocketLinkService,
     RetryLinkService,
+    WebSocketLinkService,
   ],
   bootstrap: [AppComponent],
 })
