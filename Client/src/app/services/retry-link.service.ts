@@ -7,10 +7,10 @@ import { isFailed } from '../features/server-connection/ngrx/server-connection.a
 
 @Injectable()
 export class RetryLinkService {
-  readonly retryLinkOptions: RetryLink.Options;
+  readonly retryLink;
 
   constructor(private readonly store: Store) {
-    this.retryLinkOptions = {
+    this.retryLink = new RetryLink({
       attempts: (count, operation) => {
         if (operation.operationName == environment.serverConnection.longPolling.operationName) {
           this.store.dispatch(isFailed());
@@ -23,6 +23,6 @@ export class RetryLinkService {
         return longPollingOperations
           .find((o) => o.name === operation.operationName)!.delay;
       },
-    };
+    });
   }
 }
