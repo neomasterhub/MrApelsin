@@ -9,11 +9,11 @@ import { isFailed } from '../features/server-connection/ngrx/server-connection.a
 export class RetryLinkService {
   readonly retryLink;
 
-  constructor(private readonly store: Store) {
+  constructor(store: Store) {
     this.retryLink = new RetryLink({
       attempts: (count, operation) => {
         if (operation.operationName == environment.serverConnection.longPollingOperation) {
-          this.store.dispatch(isFailed());
+          store.dispatch(isFailed());
         }
 
         return longPollingOperations
