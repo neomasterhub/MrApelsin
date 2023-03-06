@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { GetHttpPongGQL } from '../../../../../graphql/generated/graphql';
-import { isEstablished } from '../../ngrx/server-connection.actions';
 
 @Injectable()
 export class GetHttpPongService {
@@ -16,13 +15,22 @@ export class GetHttpPongService {
     this.valueChanges = getHttpPongGQL.watch({}, {
       pollInterval: environment.serverConnection.attemptIntervalSeconds * 1000,
       fetchPolicy: 'network-only',
+      useInitialLoading: true,
+      notifyOnNetworkStatusChange: true,
     }).valueChanges;
   }
 
   ping() {
     this.valueChanges
       .pipe(
-        tap(() => this.store.dispatch(isEstablished())),
+        tap(({ data, loading, networkStatus }) => {
+          console.log({
+            event: loading ? 'request start' : 'response received',
+            loading,
+            networkStatus,
+            data: data?.ping?.utcDatetime,
+          });
+        })
       )
       .subscribe();
   }
