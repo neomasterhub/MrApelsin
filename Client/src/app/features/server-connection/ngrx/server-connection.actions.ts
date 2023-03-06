@@ -14,10 +14,6 @@ export const engineIsStarted = createAction(
   `${contextName} engine is started`,
 );
 
-export const isConfigured = createAction(
-  `${contextName} is configured`,
-);
-
 export const isEstablishing = createAction(
   `${contextName} is establishing`,
 );
