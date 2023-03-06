@@ -20,9 +20,6 @@ import {
 import {
   WebSocketServerConnectionEffects,
 } from './features/server-connection/web-socket/ngrx/web-socket-server-connection.effects';
-import {
-  ConfigureGraphqlWsService,
-} from './features/server-connection/web-socket/services/configure-graphql-ws.service';
 import { ConsumeWsMessagesService } from './features/server-connection/web-socket/services/consume-ws-messages.service';
 import { GraphQLModule } from './graphql.module';
 import { metaReducers } from './ngrx/app.reducers';
@@ -52,7 +49,6 @@ import { metaReducers } from './ngrx/app.reducers';
     ]),
   ],
   providers: [
-    ConfigureGraphqlWsService,
     ConsumeWsMessagesService,
     GetHttpPongService,
   ],
