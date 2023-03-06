@@ -9,8 +9,6 @@ export const environment = {
   serverConnection: {
     connectionType: ServerConnectionType.webSocket,
     attemptIntervalSeconds: 10,
-    longPolling: {
-      operationName: 'GetHttpPong',
-    },
+    longPollingOperation: 'GetHttpPong',
   },
 };

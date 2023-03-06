@@ -12,7 +12,7 @@ export class RetryLinkService {
   constructor(private readonly store: Store) {
     this.retryLink = new RetryLink({
       attempts: (count, operation) => {
-        if (operation.operationName == environment.serverConnection.longPolling.operationName) {
+        if (operation.operationName == environment.serverConnection.longPollingOperation) {
           this.store.dispatch(isFailed());
         }
 
