@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { isCreated } from './ngrx/app.actions';
 
@@ -7,8 +7,11 @@ import { isCreated } from './ngrx/app.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less'],
 })
-export class AppComponent {
-  constructor(store: Store) {
-    store.dispatch(isCreated());
+export class AppComponent implements OnInit {
+  constructor(private readonly store: Store) {
+  }
+
+  ngOnInit() {
+    this.store.dispatch(isCreated());
   }
 }
