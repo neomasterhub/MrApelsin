@@ -41,12 +41,15 @@ export class LongPollingServerConnectionEffects {
     );
   });
 
+  /*
+  * To display "ping" status.
+  * */
   public serverConnectionIsWaitingEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isFailed),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),
       filter(([, serverConnectionType]) => serverConnectionType == ServerConnectionType.longPolling),
-      delay(environment.serverConnection.attemptIntervalSeconds * 1000), // for "ping" status in html
+      delay(environment.serverConnection.attemptIntervalSeconds * 1000),
       map(() => isEstablishing()),
     );
   });
