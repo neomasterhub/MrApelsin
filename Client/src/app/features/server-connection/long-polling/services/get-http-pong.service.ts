@@ -21,7 +21,7 @@ export class GetHttpPongService {
     }).valueChanges;
   }
 
-  ping() {
+  intervalPing() {
     this.valueChanges
       .pipe(
         tap(({ loading }) => {

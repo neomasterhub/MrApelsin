@@ -27,7 +27,7 @@ export class LongPollingServerConnectionEffects {
     return this.actions$.pipe(
       ofType(typeIsDefined),
       filter((a) => a.connectionType === ServerConnectionType.longPolling),
-      tap(() => this.getHttpPongService.ping()),
+      tap(() => this.getHttpPongService.intervalPing()),
       map(() => engineIsStarted()),
     );
   });
