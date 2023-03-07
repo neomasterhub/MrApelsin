@@ -12,6 +12,7 @@ export class RetryLinkService {
   constructor(store: Store) {
     this.retryLink = new RetryLink({
       attempts: (count, operation) => {
+        // A place for a service that dispatches an action for each long polling operation.
         if (operation.operationName == environment.serverConnection.longPollingOperation) {
           store.dispatch(isFailed());
         }
