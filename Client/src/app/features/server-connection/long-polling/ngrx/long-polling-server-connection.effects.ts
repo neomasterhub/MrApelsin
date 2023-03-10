@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { delay, filter, map, tap, withLatestFrom } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
+import { ServerMessageType } from '../../../../../graphql/generated/graphql';
 import { ServerConnectionType } from '../../activity-types/server-connection-type';
 import {
   engineIsStarted,
@@ -10,6 +11,7 @@ import {
   isEstablishing,
   isFailed,
   isWaiting,
+  serverMessageIsReceived,
   typeIsDefined,
 } from '../../ngrx/server-connection.actions';
 import { GetHttpPongService } from '../services/get-http-pong.service';
@@ -29,6 +31,17 @@ export class LongPollingServerConnectionEffects {
       filter((a) => a.connectionType === ServerConnectionType.longPolling),
       tap(() => this.getHttpPongService.intervalPing()),
       map(() => engineIsStarted()),
+    );
+  });
+
+  public serverMessageIsReceivedEffect$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(serverMessageIsReceived),
+      withLatestFrom(this.store.select(s => s.serverConnectionType)),
+      filter(([{ serverMessage }, serverConnectionType]) =>
+        serverMessage.messageType == ServerMessageType.Ping
+        && serverConnectionType == ServerConnectionType.longPolling),
+      map(() => isEstablished()),
     );
   });
 
