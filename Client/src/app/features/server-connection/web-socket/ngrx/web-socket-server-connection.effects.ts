@@ -16,7 +16,7 @@ export class WebSocketServerConnectionEffects {
   ) {
   }
 
-  public serverConnectionIsDefinedEffect$ = createEffect(() => {
+  public typeIsDefinedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(typeIsDefined),
       filter((a) => a.connectionType === ServerConnectionType.webSocket),
@@ -25,7 +25,7 @@ export class WebSocketServerConnectionEffects {
     );
   });
 
-  public serverConnectionEngineIsStartedEffect$ = createEffect(() => {
+  public engineIsStartedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(engineIsStarted),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),
@@ -34,7 +34,7 @@ export class WebSocketServerConnectionEffects {
     );
   });
 
-  public serverConnectionIsWaitingEffect$ = createEffect(() => {
+  public isWaitingEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isWaiting),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),

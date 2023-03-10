@@ -23,7 +23,7 @@ export class LongPollingServerConnectionEffects {
   ) {
   }
 
-  public serverConnectionIsDefinedEffect$ = createEffect(() => {
+  public typeIsDefinedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(typeIsDefined),
       filter((a) => a.connectionType === ServerConnectionType.longPolling),
@@ -32,7 +32,7 @@ export class LongPollingServerConnectionEffects {
     );
   });
 
-  public serverConnectionIsEstablishedEffect$ = createEffect(() => {
+  public isEstablishedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isEstablished),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),
@@ -44,7 +44,7 @@ export class LongPollingServerConnectionEffects {
   /*
   * To display "ping" status.
   * */
-  public serverConnectionIsWaitingEffect$ = createEffect(() => {
+  public isFailedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isFailed),
       withLatestFrom(this.store.select(s => s.serverConnectionType)),
