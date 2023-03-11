@@ -8,9 +8,6 @@ import { GetHttpPongService } from '../features/server-connection/long-polling/s
 import {
   ConsumeWsMessagesService,
 } from '../features/server-connection/web-socket/services/consume-ws-messages.service';
-import { HttpLinkService } from '../services/http-link.service';
-import { RetryLinkService } from '../services/retry-link.service';
-import { WebSocketLinkService } from '../services/web-socket-link.service';
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { NgrxModule } from './ngrx.module';
@@ -31,9 +28,6 @@ import { NgrxModule } from './ngrx.module';
   providers: [
     ConsumeWsMessagesService,
     GetHttpPongService,
-    HttpLinkService,
-    RetryLinkService,
-    WebSocketLinkService,
   ],
   bootstrap: [AppComponent],
 })
