@@ -28,9 +28,7 @@ export class GetHttpPongService {
           if (loading) {
             this.store.dispatch(isEstablishing());
           } else {
-            this.store.dispatch(serverMessageIsReceived({
-              serverMessage: data!.ping!,
-            }));
+            this.store.dispatch(serverMessageIsReceived({ serverMessage: data!.ping! }));
           }
         }),
       )
