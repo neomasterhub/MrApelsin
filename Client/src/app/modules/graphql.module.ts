@@ -20,11 +20,7 @@ export function createApollo(splitLinkService: SplitLinkService): ApolloClientOp
     RetryLinkService,
     WebSocketLinkService,
     SplitLinkService,
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory: createApollo,
-      deps: [SplitLinkService],
-    },
+    { provide: APOLLO_OPTIONS, useFactory: createApollo, deps: [SplitLinkService] },
   ],
 })
 export class GraphQLModule {

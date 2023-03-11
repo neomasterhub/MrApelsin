@@ -7,7 +7,7 @@ import { FooterComponent } from '../features/footer/components/footer.component'
 import { HeaderComponent } from '../features/header/components/header.component';
 import { LoadingAnimationComponent } from '../features/loading-animation/components/loading-animation.component';
 import {
-  AnimatedHttpRequestInterceptor
+  AnimatedHttpRequestInterceptor,
 } from '../features/loading-animation/interceptors/animated-http-request.interceptor';
 import { GetHttpPongService } from '../features/server-connection/long-polling/services/get-http-pong.service';
 import {
@@ -22,16 +22,17 @@ import { NgrxModule } from './ngrx.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     LoadingAnimationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
+    // custom:
     AppRoutingModule,
     GraphQLModule,
     NgrxModule,
-    BrowserAnimationsModule,
     MaterialModule,
   ],
   providers: [

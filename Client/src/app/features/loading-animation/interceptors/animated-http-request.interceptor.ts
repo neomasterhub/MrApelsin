@@ -10,11 +10,11 @@ export class AnimatedHttpRequestInterceptor implements HttpInterceptor {
   constructor(private spinnerService: SpinnerService) {
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     this.spinnerService.show();
 
-    return next.handle(req)
+    return next.handle(request)
       .pipe(
         catchError((e) => {
           this.spinnerService.hide();

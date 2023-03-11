@@ -13,16 +13,17 @@ export class RetryLinkService {
     this.retryLink = new RetryLink({
       attempts: (count, operation) => {
         // A place for a service that dispatches an action for each long polling operation.
+        // TODO: Add interceptor to ILongPollingOperation.
         if (operation.operationName == environment.serverConnection.longPollingOperation) {
           store.dispatch(isFailed());
         }
 
         return longPollingOperations
-          .some((o) => o.name === operation.operationName);
+          .some(o => o.name === operation.operationName);
       },
       delay: (count, operation) => {
         return longPollingOperations
-          .find((o) => o.name === operation.operationName)!.delay;
+          .find(o => o.name === operation.operationName)!.delay;
       },
     });
   }
