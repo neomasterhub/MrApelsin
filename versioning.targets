@@ -22,8 +22,8 @@
             File="$(ClientVersionPath)"
             Lines="// auto-generated
 export const appVersion = {
-  versionNumber: '$(Version)',
-  versionDatetime: '$(CurrentDatetime)',
+  number: '$(Version)',
+  datetime: '$(CurrentDatetime)',
 }%3B"
             Overwrite="true"
             Encoding="UTF-8" />

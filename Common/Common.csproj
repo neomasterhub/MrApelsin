@@ -6,8 +6,12 @@
 		<Nullable>disable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
 	<Import Project="..\stylecop.props" />
 	<Import Project="..\http.targets" />
 	<Import Project="..\testing.targets" />
-
+	
 </Project>
