@@ -1,7 +1,0 @@
-mutation Ping {
-  ping {
-    messageType
-    contentType
-    content
-  }
-}

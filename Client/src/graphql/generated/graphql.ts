@@ -118,11 +118,6 @@ export type Subscription = {
   serverMessageReceived?: Maybe<ServerMessage>;
 };
 
-export type PingMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PingMutation = { __typename?: 'Mutation', ping?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null } | null };
-
 export type GetHttpPongQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -133,26 +128,6 @@ export type ServerMessageReceivedSubscriptionVariables = Exact<{ [key: string]: 
 
 export type ServerMessageReceivedSubscription = { __typename?: 'Subscription', serverMessageReceived?: { __typename?: 'ServerMessage', messageType: ServerMessageType, contentType: ContentType, content?: string | null, utcDatetime: any } | null };
 
-export const PingDocument = gql`
-    mutation Ping {
-  ping {
-    messageType
-    contentType
-    content
-  }
-}
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class PingGQL extends Apollo.Mutation<PingMutation, PingMutationVariables> {
-    override document = PingDocument;
-
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }
 export const GetHttpPongDocument = gql`
     query GetHttpPong {
   ping {
