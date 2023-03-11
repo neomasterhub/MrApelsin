@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../components/app.component';
@@ -8,6 +8,7 @@ import { GetHttpPongService } from '../features/server-connection/long-polling/s
 import {
   ConsumeWsMessagesService,
 } from '../features/server-connection/web-socket/services/consume-ws-messages.service';
+import { AnimatedHttpRequestInterceptor } from '../interceptors/animated-http-request.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { NgrxModule } from './ngrx.module';
@@ -28,6 +29,7 @@ import { NgrxModule } from './ngrx.module';
   providers: [
     ConsumeWsMessagesService,
     GetHttpPongService,
+    { provide: HTTP_INTERCEPTORS, useClass: AnimatedHttpRequestInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
