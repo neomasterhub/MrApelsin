@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { Store } from '@ngrx/store';
 import { createClient } from 'graphql-ws';
-import { environment } from '../../environments/environment';
-import { isEstablished, isFailed } from '../features/server-connection/ngrx/server-connection.actions';
+import { environment } from '../../../../environments/environment';
+import { isEstablished, isFailed } from '../../server-connection/ngrx/server-connection.actions';
 
 @Injectable()
 export class WebSocketLinkService {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpLink } from 'apollo-angular/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class HttpLinkService {

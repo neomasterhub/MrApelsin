@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { RetryLink } from '@apollo/client/link/retry';
 import { Store } from '@ngrx/store';
-import { environment } from '../../environments/environment';
-import { longPollingOperations } from '../consts/long-polling-operations';
-import { isFailed } from '../features/server-connection/ngrx/server-connection.actions';
+import { environment } from '../../../../environments/environment';
+import { longPollingOperations } from '../../../consts/long-polling-operations';
+import { isFailed } from '../../server-connection/ngrx/server-connection.actions';
 
 @Injectable()
 export class RetryLinkService {

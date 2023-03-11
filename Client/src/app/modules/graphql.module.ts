@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
-import { HttpLinkService } from '../services/http-link.service';
-import { RetryLinkService } from '../services/retry-link.service';
-import { SplitLinkService } from '../services/split-link.service';
-import { WebSocketLinkService } from '../services/web-socket-link.service';
+import { HttpLinkService } from '../features/apollo/services/http-link.service';
+import { RetryLinkService } from '../features/apollo/services/retry-link.service';
+import { SplitLinkService } from '../features/apollo/services/split-link.service';
+import { WebSocketLinkService } from '../features/apollo/services/web-socket-link.service';
 
 export function createApollo(splitLinkService: SplitLinkService): ApolloClientOptions<any> {
   return {
