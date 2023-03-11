@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from '../components/app.component';
 import { FooterComponent } from '../features/footer/components/footer.component';
 import { HeaderComponent } from '../features/header/components/header.component';
-import { LoadingAnimation } from '../features/loading-animation/components/loading.animation';
+import { LoadingAnimationComponent } from '../features/loading-animation/components/loading-animation.component';
 import {
   AnimatedHttpRequestInterceptor
 } from '../features/loading-animation/interceptors/animated-http-request.interceptor';
@@ -23,7 +23,7 @@ import { NgrxModule } from './ngrx.module';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoadingAnimation,
+    LoadingAnimationComponent,
   ],
   imports: [
     BrowserModule,
