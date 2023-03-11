@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../components/app.component';
 import { FooterComponent } from '../features/footer/components/footer.component';
-import { HeaderComponent } from '../features/header/header.component';
+import { HeaderComponent } from '../features/header/components/header.component';
 import { GetHttpPongService } from '../features/server-connection/long-polling/services/get-http-pong.service';
 import {
   ConsumeWsMessagesService,
