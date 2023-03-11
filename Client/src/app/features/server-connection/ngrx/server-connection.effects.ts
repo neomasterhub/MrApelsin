@@ -10,14 +10,14 @@ export class ServerConnectionEffects {
   constructor(private readonly actions$: Actions) {
   }
 
-  public appIsCreatedEffect$ = createEffect(() => {
+  public isCreatedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isCreated),
       map(() => typeIsDefined({ connectionType: environment.serverConnection.connectionType })),
     );
   });
 
-  public serverConnectionIsFailedEffect$ = createEffect(() => {
+  public isFailedEffect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(isFailed),
       map(() => isWaiting()),
